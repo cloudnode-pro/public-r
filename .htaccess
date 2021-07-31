@@ -1,0 +1,9 @@
+<filesMatch ".(flv|gif|ico|jpg|jpeg|mp4|mpeg|png|svg|swf|webp|html|css|js)$">
+    Header set Cache-Control "max-age=31536000, public"
+</filesMatch>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /r/server.php [L]
+
+Header set Access-Control-Allow-Origin "*"

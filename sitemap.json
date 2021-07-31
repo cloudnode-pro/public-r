@@ -1,0 +1,82 @@
+{
+	"/": {
+		"title": "Home",
+		"src": "cmp:pages/home"	
+	},
+	"/tickets": {
+		"title": "Tickets",
+		"src": "text:your tickets here"
+	},
+	"/tickets/*": {
+		"title": "Ticket",
+		"src": "text:The ID of this ticket is {{main.page.basename}}"
+	},
+	"/errors/404": {
+		"title": "Error",
+		"src": "cmp:pages/err/404"
+	},
+	"/blank": {
+		"title": "Blank Page",
+		"src": "cmp:pages/blank"	
+	},
+	"/pricing/*": {
+		"title": "Pricing",
+		"src": "cmp:pages/pricing"	
+	},
+	"/pricing": {
+		"title": "Pricing",
+		"src": "cmp:pages/pricing"	
+	},
+	"/domains": {
+		"title": "Domains",
+		"src": "cmp:pages/domains"	
+	},
+	"/login": {
+		"title": "Sign In",
+		"src": "cmp:pages/login"	
+	},
+	"/register": {
+		"title": "Sign Up",
+		"src": "cmp:pages/register"	
+	},
+	"/terms": {
+		"title": "Terms of Service",
+		"src": "cmp:pages/document"	
+	},
+	"/privacy": {
+		"title": "Privacy Policy",
+		"src": "cmp:pages/document"	
+	},
+	"/account": {
+		"title": "My Account",
+		"src": "cmp:pages/account"	
+	},
+	"/account/*": {
+		"title": "My Account",
+		"src": "cmp:pages/account"	
+	},
+	"/servers": {
+		"title": "Servers",
+		"src": "cmp:pages/servers"	
+	},
+	"/servers/*": {
+		"title": "Server",
+		"src": "cmp:pages/panel"	
+	},
+	"/servers/*/*": {
+		"title": "Server",
+		"src": "cmp:pages/panel"	
+	},
+	"/credits.txt": {
+		"title": "Credits",
+		"src": "cmp:pages/credits.txt"	
+	},
+	"/jobs": {
+		"title": "Careers",
+		"src": "cmp:pages/jobs"	
+	},
+	"/logout": {
+		"title": "Sign Out",
+		"src": "cmp:pages/logout"	
+	}
+}
