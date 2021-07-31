@@ -1,4 +1,12 @@
-if (typeof main !== "object") throw new Error("core library missing; nothing to extend");
+/* Copyright (C) 2021 Cloudnode - All Rights Reserved
+ * Any use, distribution or modification of this code
+ * is subject to the terms of the provided license.
+ *
+ * The license is available at the root (/) of the
+ * repository. If not, please write to:
+ * support@cloudnode.pro
+ */
+ if (typeof main !== "object") throw new Error("core library missing; nothing to extend");
 main.init = function (app, $el, options = {}) {
 	const apps = {
 		codeInput: function ($el, options) {

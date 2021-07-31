@@ -1,4 +1,12 @@
-window.addEventListener("offline", function () {
+/* Copyright (C) 2021 Cloudnode - All Rights Reserved
+ * Any use, distribution or modification of this code
+ * is subject to the terms of the provided license.
+ *
+ * The license is available at the root (/) of the
+ * repository. If not, please write to:
+ * support@cloudnode.pro
+ */
+ window.addEventListener("offline", function () {
     main.page.toast({body: {content: "<b>You are offline.</b><br>You can continue using the platform, but some pages and features may not function as expected."},theme: {background: "dark",color: "white",close: "white"},delay: 8000})
 });
 window.addEventListener("online", function () {
