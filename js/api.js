@@ -7,7 +7,7 @@
  * support@cloudnode.pro
  */
 if (typeof main !== "object") throw new Error("Main module is required");
-if (localStorage.main.apiData !== undefined) main.apiData = JSON.parse(localStorage.main.apiData);
+if (localStorage.apiData !== undefined) main.apiData = JSON.parse(localStorage.apiData);
 if (typeof main.apiData !== "object" || main.apiData.time + main.apiData.branches.ttl * 1000 < Date.now()) fetch(`https://${main.endpoints.api}/`).then(f => {
     f.json().then(data => {
         main.apiData = data;
