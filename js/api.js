@@ -12,7 +12,7 @@ if (localStorage.apiData !== undefined) apiData = JSON.parse(localStorage.apiDat
 if (typeof apiData !== "object" || apiData.time + apiData.branches.ttl * 1000 < Date.now()) fetch(`https://${main.endpoints.api}/`).then(f => {
     f.json().then(data => {
         apiData = data;
-        localStorage.setItem("apiData", apiData);
+        localStorage.setItem("apiData", JSON.stringify(apiData));
     });  
 });
 
