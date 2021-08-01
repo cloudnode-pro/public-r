@@ -10,7 +10,10 @@ if (typeof main !== "object") throw new Error("Main module is required");
 let apiData;
 if (localStorage.apiData !== undefined) apiData = JSON.parse(localStorage.apiData);
 if (typeof apiData !== "object" || apiData.time + apiData.branches.ttl * 1000 < Date.now()) fetch(`https://${main.endpoints.api}/`).then(f => {
-    f.json().then(data => apiData = data);  
+    f.json().then(data => {
+        apiData = data;
+        localStorage.setItem("apiData", apiData);
+    });  
 });
 
 main.api = {
