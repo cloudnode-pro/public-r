@@ -8,7 +8,7 @@
  */
 if (typeof main !== "object") throw new Error("Main module is required");
 if (localStorage.apiData !== undefined) main.apiData = JSON.parse(localStorage.apiData);
-if (typeof main.apiData !== "object" || main.apiData.time + main.apiData.branches.ttl * 1000 < Date.now()) fetch(`https://${main.endpoints.api}/`).then(f => {
+if (typeof main.apiData !== "object" || main.apiData.time + main.apiData.branches.ttl * 1000 < Date.now()) fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/`).then(f => {
     f.json().then(data => {
         main.apiData = data;
         localStorage.setItem("main.apiData", JSON.stringify(main.apiData));
@@ -24,7 +24,7 @@ main.api = {
             if (typeof password === "string") data.password = password;
             if (typeof bypass === "string") data.bypass = password;
             $.post({
-                url: `https://${main.endpoints.api}/auth/register`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/auth/register`,
                 data: data,
                 success: function () {
                     callback(...arguments);
@@ -45,7 +45,7 @@ main.api = {
             if (typeof password === "string") data.password = password;
             if (typeof mfa !== "undefined") data["2fa"] = mfa;
             $.post({
-                url: `https://${main.endpoints.api}/auth/login`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/auth/login`,
                 data: data,
                 success: function (r, x) {
                     callback(r, x);
@@ -66,7 +66,7 @@ main.api = {
         },
         logout: function (callback = new Function) {
             $.post({
-                url: `https://${main.endpoints.api}/auth/logout`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/auth/logout`,
                 success: callback,
                 credentials: true
             });
@@ -81,7 +81,7 @@ main.api = {
         }
         else if (token.length > 0) token = `/${encodeURIComponent(token)}`;
         $.get({
-            url: `https://${main.endpoints.api}/session${token}`,
+            url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/session${token}`,
             success: callback,
             credentials: true
         })
@@ -93,7 +93,7 @@ main.api = {
         }
         else if (input.length > 0) input = `/${input}`;
         $.get({
-            url: `https://${main.endpoints.api}/currency${input}`,
+            url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/currency${input}`,
             success: callback,
             credentials: true
         })
@@ -103,7 +103,7 @@ main.api = {
         email: {
             confirm: function (code, callback = new Function) {
                 $.post({
-                    url: `https://${main.endpoints.api}/account/email/confirm`,
+                    url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/account/email/confirm`,
                     data: {
                          token: code   
                     },
@@ -118,19 +118,19 @@ main.api = {
     validate: {
         email: function (input, callback = new Function) {
             $.get({
-                url: `https://${main.endpoints.api}/validate/email?input=${encodeURIComponent(input)}`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/validate/email?input=${encodeURIComponent(input)}`,
                 success: callback
             })
         },
         name: function (input, callback = new Function) {
             $.get({
-                url: `https://${main.endpoints.api}/validate/name?input=${encodeURIComponent(input)}`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/validate/name?input=${encodeURIComponent(input)}`,
                 success: callback
             })
         },
         password: function (input, callback = new Function) {
             $.get({
-                url: `https://${main.endpoints.api}/validate/password?input=${encodeURIComponent(input)}`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/validate/password?input=${encodeURIComponent(input)}`,
                 success: callback
             })
         }
@@ -138,19 +138,19 @@ main.api = {
     verify: {
         email: function (input, callback = new Function) {
             $.get({
-                url: `https://${main.endpoints.api}/verify/email?input=${encodeURIComponent(input)}`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/verify/email?input=${encodeURIComponent(input)}`,
                 success: callback
             })
         },
         network: function (input, callback = new Function) {
             $.get({
-                url: `https://${main.endpoints.api}/verify/network?input=${encodeURIComponent(input)}`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/verify/network?input=${encodeURIComponent(input)}`,
                 success: callback
             })
         },
         hostname: function (input, callback = new Function) {
             $.get({
-                url: `https://${main.endpoints.api}/verify/hostname?input=${encodeURIComponent(input)}`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/verify/hostname?input=${encodeURIComponent(input)}`,
                 success: callback
             })
         }
@@ -163,7 +163,7 @@ main.api = {
     domain: {
         search: function (domain, callback = new Function) {
             $.get({
-                url: `https://${main.endpoints.api}/domain/search/${domain}`,
+                url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/domain/search/${domain}`,
                 success: function (response, xhr) {
                     return callback(response, xhr);
                 }
@@ -174,7 +174,7 @@ main.api = {
         user: {
             basic: function (user, bypass, callback = new Function) {
                 $.get({
-                    url: `https://${main.endpoints.api}/users/${user}/basic${bypass === undefined ? "" : `?bypass=${bypass}`}`,
+                    url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/users/${user}/basic${bypass === undefined ? "" : `?bypass=${bypass}`}`,
                     success: function (response, xhr) {
                         return callback(response, xhr);
                     }
@@ -187,7 +187,7 @@ main.api = {
         if (typeof q === "string" || typeof q === "number") suffix = `/${q}`;
         else if (typeof q === "function") callback = q;
         $.get({
-            url: `https://${main.endpoints.api}/pricing${suffix}`,
+            url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/pricing${suffix}`,
             success: function (response, xhr) {
                 return callback(response, xhr);
             }
@@ -195,7 +195,7 @@ main.api = {
     },
     stats: function (q = "", callback = new Function) {
         $.get({
-            url: `https://${main.endpoints.api}/stats/${q}`,
+            url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/stats/${q}`,
             success: callback
         })
     }
