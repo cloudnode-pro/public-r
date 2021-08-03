@@ -47,7 +47,7 @@ function change (iso) {
 
 function renderPrices () {
 	$("[data-price]").iterator(function (k) {
-		$(k).html(`${main.currency.list[main.currency.selected].prefix ? main.currency.list[main.currency.selected].symbol : ""}${Math.ceil(+$(k).attr("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!main.currency.list[main.currency.selected].prefix ? main.currency.list[main.currency.selected].symbol : ""}`);
+		$(k).html(`${(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}${Math.ceil(+$(k).attr("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}`);
 	});
 }
 
