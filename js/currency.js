@@ -23,7 +23,7 @@ if ([undefined, null].includes(sessionStorage.currencies) || Date.now() - (main.
 else render();
 
 function render () {
-	$("#currencySelect").html(`<span class="align-middle me-2">${main.currency.list[main.currency.selected].symbol}</span><span class="align-middle">${main.currency.selected}</span>`);
+	$("#currencySelect").html(`<span class="align-middle me-2">${(main.currency.list[main.currency.selected]?.symbol ?? "(error)")}</span><span class="align-middle">${main.currency.selected}</span>`);
 	$(".currency-select ul").html("");
 	for (let iso in main.currency.list) {
 		let symbol = (main.currency.list[iso]?.symbol ?? "(error)");
@@ -47,7 +47,7 @@ function change (iso) {
 
 function renderPrices () {
 	$("[data-price]").iterator(function (k) {
-		$(k).html(`${(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}${Math.ceil(+$(k).attr("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}`);
+		$(k).html(`${(main.currency.list[main.currency.selected]?.prefix ?? true) ? (main.currency.list[main.currency.selected]?.symbol ?? "(error)") : ""}${Math.ceil(+$(k).attr("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}`);
 	});
 }
 
