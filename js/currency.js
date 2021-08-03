@@ -13,7 +13,7 @@ main.currency = {
 }
 
 // check if currencies not cached or over 24 hours since update
-if ([undefined, null].includes(sessionStorage.currencies) || Date.now() - main.currency.list[main.currency.selected]?.updated ?? 0 > 864e5) {
+if ([undefined, null].includes(sessionStorage.currencies) || Date.now() - (main.currency.list[main.currency.selected]?.updated ?? 0) > 864e5) {
 	main.api.currency(function (data) {
 		sessionStorage.setItem("currencies", JSON.stringify(data));
 		main.currency.list = data;
