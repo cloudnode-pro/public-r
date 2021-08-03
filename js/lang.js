@@ -31,7 +31,8 @@ if (sessionStorage["languages.json"] === undefined || sessionStorage["languages.
     success: function (response) {
         response = response.content;
         main.langData = {
-        	languages: response
+        	languages: response,
+            fallback: {}
         }
         sessionStorage.setItem("languages.json", JSON.stringify(response));
 
@@ -55,7 +56,8 @@ if (sessionStorage["languages.json"] === undefined || sessionStorage["languages.
 else {
     main.langData = {
         languages: JSON.parse(sessionStorage["languages.json"]),
-        translations: JSON.parse(sessionStorage["languages.translations"])
+        translations: JSON.parse(sessionStorage["languages.translations"]),
+        fallback: {}
     }
 
     if (main.langData.languages[navigator.language.substr(0,2)] && main.cookies.lang === undefined) main.lang = navigator.language.substr(0,2);
@@ -64,4 +66,3 @@ else {
     for (let cb of main.langModuleLoadCallbacks) cb();
     main.langData.translate = replaceTemplates;
 }
-main.langData.fallback = {};
