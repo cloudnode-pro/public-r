@@ -26,7 +26,7 @@ function render () {
 	$("#currencySelect").html(`<span class="align-middle me-2">${main.currency.list[main.currency.selected].symbol}</span><span class="align-middle">${main.currency.selected}</span>`);
 	$(".currency-select ul").html("");
 	for (let iso in main.currency.list) {
-		let symbol = main.currency.list[iso].symbol;
+		let symbol = (main.currency.list[iso]?.symbol ?? "(error)");
 		$(".currency-select ul").append(`<li><a class="dropdown-item" href="#" data-currency="${iso}"><span class="me-3 align-middle">${symbol}</span><span class="align-middle">${iso}</span></a></li>`);
 	}
 	main.init("dropdownSearch", $(".currency-select ul"));
