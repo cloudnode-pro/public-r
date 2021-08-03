@@ -22,6 +22,7 @@ function replaceTemplates (str, templates = main.langData.translations) {
                 return str.replace(re, reReplacement)
         }
     }
+    main.langData.fallback[str] = true;
     return str
 }
 
@@ -63,3 +64,4 @@ else {
     for (let cb of main.langModuleLoadCallbacks) cb();
     main.langData.translate = replaceTemplates;
 }
+main.langData.fallback = {};
