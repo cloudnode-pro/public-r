@@ -22,7 +22,7 @@ function replaceTemplates (str, templates = main.langData.translations) {
                 return str.replace(re, reReplacement)
         }
     }
-    main.langData.fallback[str] = true;
+    main.langData.fallback[str] = str;
     return str
 }
 
