@@ -519,6 +519,10 @@ section.hero {
     --mask: repeating-radial-gradient(circle, hsla(0, 0%, 0%, var(--p)) 0, hsla(0, 0%, 0%, var(--p)) 2em, hsla(0, 0%, 0%, calc(1 - var(--p))) 0, hsla(0, 0%, 0%, calc(1 - var(--p))) 4em);
 }
 
+.pattern3 {
+	background-image: url("/r/img/background/pattern3.svg");
+}
+
 .form-control-translucent {
     background-color: rgb(255 255 255 / 20%);
     border-color: rgb(255 255 255 / 20%);
