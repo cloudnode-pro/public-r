@@ -7,6 +7,9 @@
  * support@cloudnode.pro
  */
 "use strict";
+if (typeof Intl === "undefined" || typeof window.Promise === "undefined" && typeof window.fetch === "undefined" && typeof window.Symbol === "undefined") {
+    document.body.innerHTML = `<div style="background-color:inherit;position:absolute;top:0;left:0;bottom:0;right:0;background-color:inherit;color:inherit;padding:2rem"><div style="max-width:800px;margin:0 auto;margin-top:7rem"><h1 style="font-weight:normal;font-family:monospace;opacity:.3">error</h1><p style="font-family:sans-serif;font-size:150%">The browser you are using does not support essential JavaScript functions that are required to run the platform.</p><p style="font-family:sans-serif;opacity:.8">In order for our platform to function, try accessing it from a more modern or up-to-date browser.</p></div></div>`;
+}
 const main = {
     company: {
         name: "<?= $mcfg->platform->name ?>",
