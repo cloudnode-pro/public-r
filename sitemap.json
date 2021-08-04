@@ -78,5 +78,13 @@
 	"/logout": {
 		"title": "Sign Out",
 		"src": "cmp:pages/logout"	
+	},
+	"/support": {
+		"title": "Support Portal",
+		"src": "cmp:pages/support"	
+	},
+	"/support/*": {
+		"title": "Support Portal",
+		"src": "cmp:pages/support"	
 	}
 }
