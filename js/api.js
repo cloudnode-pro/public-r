@@ -198,5 +198,16 @@ main.api = {
             url: `https://${main.endpoints.api}/${main.apiData.branches.latest}/stats/${q}`,
             success: callback
         })
+    },
+    support: {
+        categories: function (callback = new Function) {
+            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/suport`).then(f => f.json().then(data => callback(data, f)));
+        },
+        articles: function (category, callback = new Function) {
+
+        },
+        article: function (category, handle, callback = new Function) {
+
+        }
     }
 }
