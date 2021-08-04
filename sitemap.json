@@ -86,5 +86,9 @@
 	"/support/*": {
 		"title": "Support Portal",
 		"src": "cmp:pages/support"	
+	},
+	"/support/*/*": {
+		"title": "Support Portal",
+		"src": "cmp:pages/support"	
 	}
 }
