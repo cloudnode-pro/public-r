@@ -859,3 +859,25 @@ pre code[class^=language] {
     color: #fff;
     background-color: #1d1d1d;
 }
+
+.articles-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--bs-primary);
+    display: block;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    padding-top: .5rem;
+    text-align: center;
+    color: #fff;
+}
+
+.articles-author .name {
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.article-meta {
+    line-height: 1.1;
+    font-size: 80%;
+}
