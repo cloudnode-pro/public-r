@@ -13,7 +13,7 @@ main.currency = {
 }
 
 // check if currencies not cached or over 24 hours since update
-if ([undefined, null].includes(sessionStorage.currencies) || Date.now() - main.currency.list[main.currency.selected].updated > 864e5) {
+if ([undefined, null].includes(sessionStorage.currencies) || Date.now() - (main.currency.list[main.currency.selected]?.updated ?? 0) > 864e5) {
 	main.api.currency(function (data) {
 		sessionStorage.setItem("currencies", JSON.stringify(data));
 		main.currency.list = data;
@@ -23,10 +23,10 @@ if ([undefined, null].includes(sessionStorage.currencies) || Date.now() - main.c
 else render();
 
 function render () {
-	$("#currencySelect").html(`<span class="align-middle me-2">${main.currency.list[main.currency.selected].symbol}</span><span class="align-middle">${main.currency.selected}</span>`);
+	$("#currencySelect").html(`<span class="align-middle me-2">${(main.currency.list[main.currency.selected]?.symbol ?? "(error)")}</span><span class="align-middle">${main.currency.selected}</span>`);
 	$(".currency-select ul").html("");
 	for (let iso in main.currency.list) {
-		let symbol = main.currency.list[iso].symbol;
+		let symbol = (main.currency.list[iso]?.symbol ?? "(error)");
 		$(".currency-select ul").append(`<li><a class="dropdown-item" href="#" data-currency="${iso}"><span class="me-3 align-middle">${symbol}</span><span class="align-middle">${iso}</span></a></li>`);
 	}
 	main.init("dropdownSearch", $(".currency-select ul"));
@@ -47,7 +47,7 @@ function change (iso) {
 
 function renderPrices () {
 	$("[data-price]").iterator(function (k) {
-		$(k).html(`${main.currency.list[main.currency.selected].prefix ? main.currency.list[main.currency.selected].symbol : ""}${Math.ceil(+$(k).attr("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!main.currency.list[main.currency.selected].prefix ? main.currency.list[main.currency.selected].symbol : ""}`);
+		$(k).html(`${(main.currency.list[main.currency.selected]?.prefix ?? true) ? (main.currency.list[main.currency.selected]?.symbol ?? "(error)") : ""}${Math.ceil(+$(k).attr("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}`);
 	});
 }
 
