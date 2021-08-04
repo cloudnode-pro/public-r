@@ -193,7 +193,7 @@ a .card {
 }
 
 a:hover .card {
-    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000003d;
 }
 
 .art-night {
