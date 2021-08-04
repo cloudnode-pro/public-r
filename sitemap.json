@@ -80,15 +80,15 @@
 		"src": "cmp:pages/logout"	
 	},
 	"/support": {
-		"title": "Support Portal",
+		"title": "Support Center",
 		"src": "cmp:pages/support"	
 	},
 	"/support/*": {
-		"title": "Support Portal",
+		"title": "Support Center",
 		"src": "cmp:pages/support"	
 	},
 	"/support/*/*": {
-		"title": "Support Portal",
+		"title": "Support Center",
 		"src": "cmp:pages/support"	
 	}
 }
