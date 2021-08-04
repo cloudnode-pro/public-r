@@ -851,3 +851,11 @@ li[data-bs-toggle="tooltip"] {
 ::-webkit-scrollbar-thumb:hover {
 	background-color: #b3b2b2cf;
 }
+
+pre code[class^=language] {
+    display: block;
+    padding: .5rem;
+    border: 1px solid #ffffff0d;
+    color: #fff;
+    background-color: #1d1d1d;
+}
