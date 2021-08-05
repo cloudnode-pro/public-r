@@ -48,6 +48,9 @@ img[src="/r/img/logo/logo-black.svg"] {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='150' viewBox='0 0 24 24' width='150'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z' style='&%2310; fill: %234caf50;&%2310;'/%3E%3C/svg%3E");
     border-color: #4caf50;
 }
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f8f9fa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
 .border-end {
     border-right: 1px solid #ffffff1a!important;
 }
