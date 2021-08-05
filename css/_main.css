@@ -717,6 +717,16 @@ li[data-bs-toggle="tooltip"] {
     color: inherit;
 }
 
+.btn-icon.disabled {
+    opacity: .3;
+    pointer-events: none;
+    cursor: default;
+}
+
+.btn-icon.active {
+    color: var(--bs-primary);
+}
+
 .servers-folder {
     border-color: #8ab4f8;
 }
