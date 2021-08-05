@@ -59,6 +59,9 @@ img[src="/r/img/logo/logo-black.svg"] {
     background-color: #121212;
     border-color: #121212;
 }
+.btn-icon.active {
+    color: #8ab4f8;
+}
 section.hero {
 	/*background-image: linear-gradient(45deg, #251471, #111756, #08306f);*/
 	background-image: linear-gradient(239deg, #0145889e, transparent), radial-gradient(#330d6526, #0d6efd2b), linear-gradient(155deg, #4055bf 0%, #d251c9 46%, #699fef 100%);
