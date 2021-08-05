@@ -207,7 +207,7 @@ main.api = {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`).then(f => f.json().then(data => callback(data, f)));
         },
         article: function (category, handle, callback = new Function) {
-            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}/${handle}`, {credentials:true}).then(f => f.json().then(data => callback(data, f)));
+            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}/${handle}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
         }
     }
 }
