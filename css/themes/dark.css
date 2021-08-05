@@ -23,19 +23,28 @@ img[src="/r/img/logo/logo-black.svg"] {
 	background-color: #202125;
 	border: 1px solid #34353c;
 }
-.form-control:not(.form-control-light,.form-control-translucent) {
+.form-control:not(.form-control-light,
+.form-control-translucent),
+.form-select:not(.form-select-light,
+.form-select-translucent) {
 	background-color: #202125;
     border: 1px solid #34353c;
     color: #f8f9fa;
 }
-.form-control:not(.form-control-light,.form-control-translucent):focus {
+.form-control:not(.form-control-light,
+.form-control-translucent):focus,
+.form-select:not(.form-select-light,
+.form-select-translucent):focus {
     color: #f8f9fa;
     background-color: #202125;
     border-color: #8ab4f8;
     outline: 0;
     box-shadow: 0 0 0 0.25rem #8ab4f840;
 }
-.form-control.is-valid:not(.form-control-light), .was-validated .form-control:not(.form-control-light):valid {
+.form-control.is-valid:not(.form-control-light),
+.was-validated .form-control:not(.form-control-light):,
+.form-select.is-valid:not(.form-select-light),
+.was-validated .form-select:not(.form-select-light):valid {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='150' viewBox='0 0 24 24' width='150'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z' style='&%2310; fill: %234caf50;&%2310;'/%3E%3C/svg%3E");
     border-color: #4caf50;
 }
