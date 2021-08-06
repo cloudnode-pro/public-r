@@ -13,8 +13,8 @@ To translate content on our website please see [cloudnode-pro/translations](http
 
 # LICENSE
 The license under which this repository is shipped is available in the `LICENSE` file.
-TLDR:
-You can:
+## TLDR:
+### You can:
  - distribute original or modified (derivative) works;
  - modify the software and create derivatives;
  - sublicense;
@@ -22,11 +22,13 @@ You can:
  - use/modify software freely without distributing it;
  - place warranty on the software licensed;
  - practice patent claims of contributors to the code.
-You cannot:
+
+### You cannot:
  - use contributors' names, trademarks or logos;
  - use the software for commercial purposes;
  - charge or hold the software/license owner liable for damages.
-You must:
+
+### You must:
  - inclde and retain the original copyright without modifying it;
  - including the full text of the license in modified software.
  - state significant changes made to software;
