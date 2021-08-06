@@ -13,7 +13,8 @@ To translate content on our website please see [cloudnode-pro/translations](http
 
 # LICENSE
 The license under which this repository is shipped is available in the `LICENSE` file.
-## TLDR:
+## TLDR
+This is only a short summary of the license. The TrackingTeams Projects License is essentially an Apache 2.0 license with modifications to deter commercial use.
 ### You can:
  - distribute original or modified (derivative) works;
  - modify the software and create derivatives;
