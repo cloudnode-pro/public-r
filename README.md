@@ -19,7 +19,7 @@ This is only a short summary of the license. The TrackingTeams Projects License 
  - distribute original or modified (derivative) works;
  - modify the software and create derivatives;
  - sublicense;
- - utilise the software as private use
+ - utilise the software for private use
  - use/modify software freely without distributing it;
  - place warranty on the software licensed;
  - practice patent claims of contributors to the code.
