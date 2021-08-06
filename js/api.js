@@ -201,20 +201,20 @@ main.api = {
     },
     support: {
         categories: function (callback = new Function) {
-            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support`).then(f => f.json().then(data => callback(data, f)));
+            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
         },
         articles: function (category, callback = new Function) {
-            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`).then(f => f.json().then(data => callback(data, f)));
+            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
         },
         article: function (category, handle, callback = new Function) {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}/${handle}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
         },
         search: {
             query: function (query, callback = new Function) {
-                fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/search?q=${encodeURIComponent(query)}`).then(f => f.json().then(data => callback(data, f)));
+                fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/search?q=${encodeURIComponent(query)}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
             },
             tag: function (tag, callback = new Function) {
-                fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/search?tag=${encodeURIComponent(tag)}`).then(f => f.json().then(data => callback(data, f)));
+                fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/search?tag=${encodeURIComponent(tag)}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
             }
         }
     }
