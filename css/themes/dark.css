@@ -124,6 +124,14 @@ input:-webkit-autofill:focus, textarea:-webkit-autofill:focus, select:-webkit-au
     -webkit-box-shadow: 0 0 0px 1000px #3b465a inset, 0 0 0 0.25rem #8ab4f840!important;
 }
 
+.breadcrumb-item.active {
+    color: #b4b5b7
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #b4b5b7
+}
+
 .btn.disabled {
     opacity: 1;
     background-color: #ffffff45;
