@@ -891,3 +891,7 @@ pre code[class^=language] {
     line-height: 1.1;
     font-size: 80%;
 }
+
+.text-inherit {
+	color:  inherit !important;
+}
