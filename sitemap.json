@@ -91,7 +91,7 @@
 		"title": "Support Center",
 		"src": "cmp:pages/support"	
 	},
-	"create": {
+	"/create": {
 		"title": "Create Server",
 		"src": "cmp:pages/create"
 	}
