@@ -90,5 +90,9 @@
 	"/support/*/*": {
 		"title": "Support Center",
 		"src": "cmp:pages/support"	
+	},
+	"/create": {
+		"title": "Create Server",
+		"src": "cmp:pages/create"
 	}
 }
