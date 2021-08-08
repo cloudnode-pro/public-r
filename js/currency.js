@@ -47,7 +47,7 @@ function change (iso) {
 
 function renderPrices () {
 	for (let k of document.querySelectorAll("[data-price]")) {
-		k.innerHTML = `${(main.currency.list[main.currency.selected]?.prefix ?? true) ? (main.currency.list[main.currency.selected]?.symbol ?? "(error)") : ""}${+k.getAttribute("data-price")) ? "-" : Math.ceil(Number.isNaN(+k.getAttribute("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}`;
+		k.innerHTML = `${(main.currency.list[main.currency.selected]?.prefix ?? true) ? (main.currency.list[main.currency.selected]?.symbol ?? "(error)") : ""}${Number.isNaN(+k.getAttribute("data-price")) ? "-" : Math.ceil(+k.getAttribute("data-price") * main.currency.list[main.currency.selected].rate * 100)/100}${!(main.currency.list[main.currency.selected]?.prefix ?? true) ? main.currency.list[main.currency.selected].symbol : ""}`;
 	}
 }
 
