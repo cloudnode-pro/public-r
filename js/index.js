@@ -53,19 +53,19 @@ function whenPrinted () {
 	    let $this = $(this);
 	    main.page.pop(`${$this.attr("action")}?${$this.serialize()}`);
 	});
-}
 
-if (location.pathname === "/") {
-	const navbarCollapse = document.getElementById("navbar");
-	const navbar = document.querySelector(".navbar");
-	navbarCollapse.addEventListener("show.bs.collapse", function () {
-		navbar.classList.remove("navbar-dark");
-		navbar.classList.add("navbar-light");
-	});
-	navbarCollapse.addEventListener("hide.bs.collapse", function () {
-        setTimeout(function () {
-		    navbar.classList.remove("navbar-light");
-		    navbar.classList.add("navbar-dark");
-        }, 260);
-	});
+	if (location.pathname === "/") {
+		const navbarCollapse = document.getElementById("navbar");
+		const navbar = document.querySelector(".navbar");
+		navbarCollapse.addEventListener("show.bs.collapse", function () {
+			navbar.classList.remove("navbar-dark");
+			navbar.classList.add("navbar-light");
+		});
+		navbarCollapse.addEventListener("hide.bs.collapse", function () {
+	        setTimeout(function () {
+			    navbar.classList.remove("navbar-light");
+			    navbar.classList.add("navbar-dark");
+	        }, 260);
+		});
+	}
 }
