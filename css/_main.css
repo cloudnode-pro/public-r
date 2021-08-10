@@ -201,7 +201,7 @@ a:hover .card {
 }
 
 .content section:only-of-type {
-	min-height: 100vh;
+	min-height: calc(100vh - 56px);
 }
 
 .error {
