@@ -26,7 +26,8 @@ const main = {
         error: "SDK not implemented."
     },
     __meta: {
-        time: new Date(<?= time() ?>000)
+        time: new Date(<?= time() ?>000),
+        mcfg: <?= json_encode($mcfg->meta) ?>
     },
     session: localStorage.__session?.startsWith('{') ? JSON.parse(localStorage.__session) : {},
     cookies: {},

@@ -209,6 +209,16 @@ main.api = {
         article: function (category, handle, callback = new Function) {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}/${handle}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
         },
+        vote: function (category, handle, vote = "u", callback = new Function) {
+            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}/${handle}/vote`, {
+                method: "POST",
+                credentials: "include",
+                mode: "cors",
+                body: new URLSearchParams({
+                    payload: vote
+                })
+            }).then(f => f.json().then(data => callback(data, f)));
+        },
         search: {
             query: function (query, callback = new Function) {
                 fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/search?q=${encodeURIComponent(query)}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));

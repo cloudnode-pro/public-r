@@ -201,7 +201,7 @@ a:hover .card {
 }
 
 .content section:only-of-type {
-	min-height: 100vh;
+	min-height: calc(100vh - 56px);
 }
 
 .error {
@@ -787,6 +787,11 @@ li[data-bs-toggle="tooltip"] {
     background-color: rgb(0 0 0 / 15%);
     text-align: center;
     font-size: 80%;
+}
+
+.dropdown-menu {
+    border: 0;
+    box-shadow: 0 3px 12px rgb(27 31 35 / 15%), 0 0 1px rgb(27 31 35 / 20%);
 }
 
 .dropdown-search {
