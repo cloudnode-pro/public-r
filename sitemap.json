@@ -94,5 +94,9 @@
 	"/create": {
 		"title": "Create Server",
 		"src": "cmp:pages/create"
+	},
+	"/create/*": {
+		"title": "Plan",
+		"src": "cmp:pages/plan"
 	}
 }
