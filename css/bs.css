@@ -7658,6 +7658,10 @@ fieldset:disabled .btn {
 	font-weight: 400!important
 }
 
+.fw-semibold {
+	font-weight: 500!important
+}
+
 .fw-bold {
 	font-weight: 700!important
 }
