@@ -6,9 +6,11 @@
  * repository. If not, please write to:
  * support@cloudnode.pro
  */
-body {
-	background-color: #121212;
-	color: #f8f9fa;
+body,
+section.waves path {
+    background-color: #121212;
+    color: #f8f9fa;
+    fill: #121212;
 }
 img[src="/r/img/logo/logo-black.svg"] {
     filter: invert(1);

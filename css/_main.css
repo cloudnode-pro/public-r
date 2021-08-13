@@ -3,6 +3,10 @@
 	--gray-dark: #202125;
 };
 
+section.waves path {
+    fill: #fff;
+}
+
 .opacity-0 {
     opacity: 0;
 }
