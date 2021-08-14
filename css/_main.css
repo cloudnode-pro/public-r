@@ -3,8 +3,12 @@
 	--gray-dark: #202125;
 };
 
-section.waves path {
-    fill: #fff;
+section .waves {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	min-height: 100px;
+	max-height: 150px;
 }
 
 .opacity-0 {
@@ -903,4 +907,12 @@ pre code[class^=language] {
 
 .text-inherit {
 	color:  inherit !important;
+}
+
+/* md breakpoint */
+@media (max-width: 768px) {
+	.waves {
+		height: 40px;
+		min-height: 40px;
+	}
 }
