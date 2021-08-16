@@ -19,7 +19,8 @@ const main = {
     },
     endpoints: {
         api: "<?= $mcfg->platform->endpoints->api ?>",
-        git: "<?= $mcfg->platform->endpoints->git ?>"
+        git: "<?= $mcfg->platform->endpoints->git ?>",
+        express: "<?= $mcfg->platform->endpoints->express ?>"
     },
     lang: "en",
     api: {
