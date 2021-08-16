@@ -32,6 +32,7 @@ const main = {
     },
     session: localStorage.__session?.startsWith('{') ? JSON.parse(localStorage.__session) : {},
     cookies: {},
+    sockets: {},
     sitemap: {
         fetch: function (a, b) {
             let force = false,
