@@ -12,6 +12,7 @@ main.page.pop = function (url) {
 	sessionStorage.removeItem("scrollPage");
 	main.page.load(location.pathname);
 	main.page.loadedScripts = [];
+	if (typeof main.sockets.visitor !== "undefined") main.sockets.visitor.emit("page:navigation", JSON.stringify({host:location.hostname,path:location.pathNames}));
 }
 
 window.onpopstate = function (e) {
