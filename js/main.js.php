@@ -289,7 +289,12 @@ const main = {
 main.page.loadScript("/r/js/api.js")
 main.page.loadScript("/r/js/utils.js")
 main.page.loadScript("/r/js/init.js")
-main.page.loadScript("/r/js/socket.io.min.js")
+main.page.loadScript("/r/js/socket.io.min.js", () => {
+    if (main.sockets.visitor === undefined) {
+        main.sockets.visitor = io(`wss://${main.endpoints.express}/visitor`, {transports: ["websocket"]});
+        main.sockets.visitor.emit("page:navigation", JSON.stringify({host:location.hostname,path:location.pathNames}));
+    }        
+})
 
 function QueryNodes () {
     this.length = 0;
