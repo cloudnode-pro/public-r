@@ -292,7 +292,10 @@ main.page.loadScript("/r/js/init.js")
 main.page.loadScript("/r/js/socket.io.min.js", () => {
     if (main.sockets.visitor === undefined) {
         main.sockets.visitor = io(`wss://${main.endpoints.express}/visitor`, {transports: ["websocket"]});
-        main.sockets.visitor.emit("page:navigation", JSON.stringify({host:location.hostname,path:location.pathname}));
+        main.sockets.visitor.on("connect", () => {
+          main.sockets.visitor.emit("page:navigation", JSON.stringify({host:location.hostname,path:location.pathname}));
+          console.log(`[SOCKET] Connected.`);
+        });
     }        
 })
 
