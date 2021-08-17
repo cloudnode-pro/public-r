@@ -28,7 +28,8 @@ const main = {
     },
     __meta: {
         time: new Date(<?= time() ?>000),
-        mcfg: <?= json_encode($mcfg->meta) ?>
+        mcfg: <?= json_encode($mcfg->meta) ?>,
+        origin: <?= (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : (isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : null)) ?>
     },
     session: localStorage.__session?.startsWith('{') ? JSON.parse(localStorage.__session) : {},
     cookies: {},
