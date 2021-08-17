@@ -294,7 +294,13 @@ main.page.loadScript("/r/js/socket.io.min.js", () => {
     if (main.sockets.visitor === undefined) {
         main.sockets.visitor = io(`wss://${main.endpoints.express}/visitor`, {transports: ["websocket"]});
         main.sockets.visitor.on("connect", () => {
-          main.sockets.visitor.emit("page:navigation", JSON.stringify({host:location.hostname,path:location.pathname}));
+          main.sockets.visitor.emit("initialContact", JSON.stringify({
+            host: location.hostname,
+            path: location.pathname,
+            origin: main.__meta.origin.data,
+            query: location.search.startsWith("?") ? location.search.substr(1).split(";").reduce((e,t)=>{const[c,n]=t.trim().split("=").map(decodeURIComponent);try{return Object.assign(e,{[c]:JSON.parse(n)})}catch(t){return Object.assign(e,{[c]:n})}},{}) : {}
+          }));
+          //main.sockets.visitor.emit("page:navigation", JSON.stringify({host:location.hostname,path:location.pathname}));
           console.log(`[SOCKET] Connected.`);
         });
     }        
