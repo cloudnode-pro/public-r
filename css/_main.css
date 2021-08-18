@@ -540,6 +540,10 @@ a:hover .card {
 	background-image: url("/r/img/background/pattern3.svg");
 }
 
+.pattern4 {
+	background-image: url("/r/img/background/pattern4.svg");
+}
+
 .form-control-translucent {
     background-color: rgb(255 255 255 / 20%);
     border-color: rgb(255 255 255 / 20%);
