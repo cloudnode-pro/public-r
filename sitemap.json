@@ -98,5 +98,9 @@
 	"/create/*": {
 		"title": "Plan",
 		"src": "cmp:pages/plan"
+	},
+	"/status": {
+		"title": "Status",
+		"src": "cmp:pages/status"
 	}
 }
