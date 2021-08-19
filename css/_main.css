@@ -920,3 +920,7 @@ pre code[class^=language] {
 		min-height: 40px;
 	}
 }
+
+.table {
+	color: inherit;
+}
