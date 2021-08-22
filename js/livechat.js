@@ -57,11 +57,11 @@ function LiveChat () {
 					}
 				}
 			});
+			document.body.appendChild(this.element);
 		}
 		else {
 			// continue chat
 		}
-		document.body.appendChild(this.element);
 	}
 	this.connect = function () {
 		if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) {
