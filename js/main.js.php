@@ -196,7 +196,7 @@ const main = {
     },
     cmp: {
         cacheList: [],
-        fetch: function (cmp, callback = new Function) {
+        fetch: async function (cmp, callback = new Function) {
             let doc = "";
             if (sessionStorage[`cmp/${cmp}`] !== undefined) success(sessionStorage[`cmp/${cmp}`]);
             else $.get({
@@ -223,11 +223,7 @@ const main = {
                         console.error(err)
                     }
                     if (codeEval instanceof Promise)
-                        codeEval.then(function (d) {
-                            console.log(d.substr(0,64));
-                            console.log(match);
-                            doc = doc.replace(match, d);
-                        });
+                        doc = doc.replace(match, await codeEval);
                     else doc = doc.replace(match, codeEval)
                 }
 
