@@ -84,7 +84,7 @@ main.utils = {
 	},
 	playSound: function (path, options = {}) {
 		const audio = new Audio(path);
-		for (let option in options) audio[option] = options[options];
+		for (let option in options) audio[option] = options[option];
 		audio.play();
 		return audio;
 	}
