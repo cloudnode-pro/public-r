@@ -19,9 +19,9 @@ function LiveChat () {
 			header.append(close, title, subtitle);
 			close.classList.add("cloudnode-livechat-icon-button");
 			close.innerHTML = `<span class="icon-tt icon-close"></span>`;
-			title.classList.add("d-1", "fw-bold");
+			title.classList.add("d-1", "fw-semibold");
 			title.innerText = typeof main.session.user === "object" ? `Hi, ${main.session.user.name.split(" ")[0]}!` : `Hey 👋`;
-			subtitle.classList.add("opacity-7", "h5", "mb-3");
+			subtitle.classList.add("opacity-7", "h5", "mb-3", "fw-normal");
 			subtitle.innerText = `What can we do to help?`;
 			(3).times((i, max) => {
 				const card = document.createElement("div");

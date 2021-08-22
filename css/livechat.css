@@ -1,11 +1,11 @@
 .cloudnode-livechat {
   border-radius: .5rem;
-  margin: 1rem;
+  margin: 1.5rem;
   overflow: hidden;
   border: 1px solid #eee;
   width: 420px;
-  height: 640px;
-  position: absolute;
+  height: 656px;
+  position: fixed;
   bottom: 0;
   right: 0;
 }
