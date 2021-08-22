@@ -137,7 +137,17 @@ const main = {
             let protocol = page.src.split(":")[0],
                 data = page.src.substr(protocol.length + 1),
                 matches = data.match(/{{[^}\n]*}}/g) || [];
-            for (let placeholder of matches) data = data.replace(placeholder, eval(placeholder.substr(2, placeholder.length - 4)));
+            for (let placeholder of matches) {
+                try {
+                    const evaluation = eval(placeholder.substr(2, placeholder.length - 4));
+                    let response = evaluation;
+                    if (evaluation instanceof Promise) evaluation.then((d) => response = d);
+                    data = data.replace(placeholder, evaluation);
+                }
+                catch (e) {
+                    console.error(e);
+                }
+            }
             switch (protocol) {
                 case "cmp": {
                     main.cmp.fetch(data, function (response) {
