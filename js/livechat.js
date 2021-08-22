@@ -34,7 +34,7 @@ const livechat = {
 				card.classList.add("cloudnode-livechat-card", "elevated", "shadow-sm")
 				if (i < cards.length - 1) card.classList.add("mb-3");
 				switch (i) {
-					case 0:
+					case 0: {
 						const title = document.createElement("h5");
 						const subtitle = document.createElement("p");
 						const button = document.createElement("button");
@@ -45,10 +45,12 @@ const livechat = {
 						button.classList.add("btn", "btn-primary", "px-4", "py-2", "mt-2");
 						button.innerText = "New conversation";
 						break;
-					case 1:
+					}
+					case 1: {
 						card.innerHTML = `<h5>Find an answer quickly</h5><form class="input-group mt-3" action="https://${main.company.domain}/support/search"><input type="text" class="form-control" placeholder="Search Help Center" aria-label="Search Help Center" id=q name=q><button class="btn btn-primary" type="submit">Go</button></form>`;
 						break;
-					case 2:
+					}
+					case 2: {
 						// todo: fetch status api
 						const title = document.createElement("h5");
 						const subtitle = document.createElement("p");
@@ -61,6 +63,7 @@ const livechat = {
 							main.page.pop("/status");
 						})
 						break;
+					}
 				}
 			}
 		}
