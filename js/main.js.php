@@ -216,7 +216,6 @@ const main = {
                     let code = match.substr(5, match.length - 7),
                         codeEval = null
                     try {
-                        console.log(code);
                         codeEval = eval(code);
                         codeEval === undefined ? codeEval = "" : codeEval;
                     }
