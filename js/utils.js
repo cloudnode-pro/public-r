@@ -82,8 +82,9 @@ main.utils = {
 	        return request;
 	    }
 	},
-	playSound: function (path) {
+	playSound: function (path, options = {}) {
 		const audio = new Audio(path);
+		for (let option in options) audio[option] = options[options];
 		audio.play();
 		return audio;
 	}
