@@ -1,6 +1,10 @@
 function LiveChat () {
 	this.open = function () {
 		if (this.element !== null) return this.element.classList.remove("collapsed");
+		const css = document.createElement("link");
+		css.href = "/r/css/livechat.css";
+		css.rel = "stylesheet";
+		document.head.appendChild(css);
 		this.element = document.createElement("div");
 		this.element.classList.add("cloudnode-livechat", "shadow", "collapsed");
 		if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) {
