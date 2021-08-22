@@ -71,6 +71,16 @@ main.utils = {
 	        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
 	    }
 	    return query;
+	},
+	fetch: function () {
+	    if (typeof window.fetch !== "function") throw new Error("Fetch API not supported.");
+	    else {
+	        const request = fetch(...arguments);
+	        request.then(response => {
+	            console.log(response.status)
+	        });
+	        return request;
+	    }
 	}
 }
 
@@ -114,15 +124,4 @@ main.page.modal = function ({header, body, footer, options}) {
 	})
 
     return [$modal, modal];
-}
-
-main.utils.fetch = function () {
-    if (typeof window.fetch !== "function") throw new Error("Fetch API not supported.");
-    else {
-        const request = fetch(...arguments);
-        request.then(response => {
-            console.log(response.status)
-        });
-        return request;
-    }
 }
