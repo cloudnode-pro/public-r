@@ -225,6 +225,8 @@ const main = {
                     }
                     if (codeEval instanceof Promise)
                         codeEval.then(function (d) {
+                            console.log(d.substr(0,64));
+                            console.log(match);
                             doc = doc.replace(match, d);
                         });
                     else doc = doc.replace(match, codeEval)
