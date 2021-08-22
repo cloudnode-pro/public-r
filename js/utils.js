@@ -135,5 +135,5 @@ main.page.modal = function ({header, body, footer, options}) {
 // prototypes
 /* iterate n times; (n).times(fn) */
 Number.prototype.times = function (fn = new Function) {
-    for (let i = 0; i < this; ++i) fn(i);
+    for (let i = 0; i < this; ++i) fn(i, this);
 }
