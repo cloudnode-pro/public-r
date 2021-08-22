@@ -131,3 +131,9 @@ main.page.modal = function ({header, body, footer, options}) {
 
     return [$modal, modal];
 }
+
+// prototypes
+/* iterate n times; (n).times(fn) */
+Number.prototype.times = function (fn = new Function) {
+    for (let i = 0; i < this; ++i) fn(i);
+}
