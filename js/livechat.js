@@ -1,12 +1,12 @@
-const livechat = {
-	open: function () {
+function LiveChat () {
+	this.open = function () {
 		if (this.element !== null) return this.element.classList.remove("collapsed");
-		livechat.element = document.createElement("div");
-		livechat.element.classList.add("cloudnode-livechat", "shadow", "collapsed");
+		this.element = document.createElement("div");
+		this.element.classList.add("cloudnode-livechat", "shadow", "collapsed");
 		if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) {
 			const header = document.createElement("div");
 			const body = document.createElement("div");
-			livechat.element.append(header, body);
+			this.element.append(header, body);
 			header.classList.add("cloudnode-livechat-header");
 			body.classList.add("cloudnode-livechat-body", "darker");
 			const close = document.createElement("button");
@@ -62,23 +62,23 @@ const livechat = {
 		else {
 			// continue chat
 		}
-	},
-	connect: function () {
+	}
+	this.connect = function () {
 		if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) {
 			return;
 		}
 		else {
 			// continue
 		}
-	},
-	collapse: function () {
+	}
+	this.collapse = function () {
 
-	},
-	handlers: {
+	}
+	this.handlers = {
 		message: function (message, side) {
-			const lastMessage = livechat.lastMessage;
+			const lastMessage = this.lastMessage;
 			message = new LiveChatMessage(message);
-			livechat.lastMessage = message;
+			this.lastMessage = message;
 			if (!document.hasFocus() || element.classList.contains("collapsed")) {
 				main.utils.playSound("/r/sound/alert_high-intensity.wav");
 				if (lastMessage === null || lastMessage.seen) {
@@ -102,14 +102,14 @@ const livechat = {
 				main.utils.playSound("/r/sound/notification_simple-01.wav");
 			}
 		}
-	},
-	lastMessage: null,
-	element: null,
-	socket: null
+	}
+	this.lastMessage = null
+	this.element = null
+	this.socket = null
 };
 
 
-if (typeof main === "object") main.livechat = livechat;
+if (typeof main === "object") main.LiveChat = LiveChat;
 
 
 // constructors
