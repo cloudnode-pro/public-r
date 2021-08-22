@@ -141,8 +141,11 @@ const main = {
                 try {
                     const evaluation = eval(placeholder.substr(2, placeholder.length - 4));
                     let response = evaluation;
-                    if (evaluation instanceof Promise) evaluation.then((d) => response = d);
-                    data = data.replace(placeholder, evaluation);
+                    if (evaluation instanceof Promise) evaluation.then(function (d) {
+                        response = d;
+                        data = data.replace(placeholder, evaluation);
+                    });
+                    else data = data.replace(placeholder, evaluation);
                 }
                 catch (e) {
                     console.error(e);
