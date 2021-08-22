@@ -137,3 +137,4 @@ main.page.modal = function ({header, body, footer, options}) {
 Number.prototype.times = function (fn = new Function) {
     for (let i = 0; i < this; ++i) fn(i, this);
 }
+window.AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
