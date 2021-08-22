@@ -196,7 +196,7 @@ const main = {
     },
     cmp: {
         cacheList: [],
-        fetch: async function (cmp, callback = new Function) {
+        fetch: function (cmp, callback = new Function) {
             let doc = "";
             if (sessionStorage[`cmp/${cmp}`] !== undefined) success(sessionStorage[`cmp/${cmp}`]);
             else $.get({
@@ -206,7 +206,7 @@ const main = {
                     console.error(err);
                 }
             });
-            function success (response) {
+            async function success (response) {
                 doc = response;
                 if (main.cmp.cacheList.indexOf(cmp) > -1) sessionStorage.setItem(`cmp/${cmp}`, doc);
                 //eval js: placeholders
