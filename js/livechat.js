@@ -45,7 +45,7 @@ function LiveChat () {
 						// todo: fetch status api
 						const title = document.createElement("h5");
 						const subtitle = document.createElement("p");
-						card.append(title, subtitle, button);
+						card.append(title, subtitle);
 						title.innerText = `Status: All services operational`;
 						subtitle.classList.add("opacity-7", "mb-0");
 						subtitle.innerText = `Last updated 5 minutes ago. Click for more information.`;
