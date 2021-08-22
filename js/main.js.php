@@ -217,13 +217,13 @@ const main = {
                         codeEval = null
                     try {
                         codeEval = eval(code);
+                        if (codeEval instanceof Promise)
+                            codeEval = await codeEval;
                         codeEval === undefined ? codeEval = "" : codeEval;
                     }
                     catch (err) {
                         console.error(err)
                     }
-                    if (codeEval instanceof Promise)
-                        codeEval = await codeEval;
                     doc = doc.replace(match, codeEval)
                 }
 
