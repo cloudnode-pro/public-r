@@ -4,14 +4,6 @@ const livechat = {
 		livechat.element = document.createElement("div");
 		livechat.element.classList.add("cloudnode-livechat", "shadow", "collapsed");
 		if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) {
-
-		}
-		else {
-			// continue chat
-		}
-	},
-	connect: function () {
-		if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) {
 			const header = document.createElement("div");
 			const body = document.createElement("div");
 			livechat.element.append(header, body);
@@ -66,6 +58,14 @@ const livechat = {
 					}
 				}
 			}
+		}
+		else {
+			// continue chat
+		}
+	},
+	connect: function () {
+		if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) {
+			return;
 		}
 		else {
 			// continue
