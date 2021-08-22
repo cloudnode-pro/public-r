@@ -1,0 +1,155 @@
+.cloudnode-livechat {
+  border-radius: .5rem;
+  margin: 1rem;
+  overflow: hidden;
+  border: 1px solid #eee;
+  width: 420px;
+  height: 640px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cloudnode-livechat-header {
+  background-color: var(--bs-primary);
+  color: #fff;
+  font-size: 1rem;
+  padding: 2.25rem 2.75rem;
+}
+
+.cloudnode-livechat-header.less {
+  padding: 1.75rem 2rem;
+}
+
+.cloudnode-livechat-header .cloudnode-livechat-icon-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.7rem;
+  padding: 0;
+  opacity: .5;
+}
+
+.cloudnode-livechat-body {
+  padding: 1rem;
+}
+
+.cloudnode-livechat-body.messages {
+  overflow: auto;
+  height: 503px;
+}
+
+.cloudnode-livechat-body.darker {
+  background-color: #f7f7f7;
+}
+
+.cloudnode-livechat-card {
+  border-radius: .25rem;
+  background-color: #fff;
+  padding: 1.75rem;
+  border: 1px solid #eee;
+}
+
+.cloudnode-livechat-card.elevated {
+  position: relative;
+  top: -3rem;
+}
+
+
+.opacity-7 {
+  opacity: .7;
+}
+
+.cloudnode-livechat-message-content {
+    background-color: #e0e0e0;
+    padding: 1rem;
+    border-radius: .25rem;
+    max-width: 80%;
+    width: max-content;
+    margin-bottom: .5rem;
+    font-size: .9rem;
+}
+
+.cloudnode-livechat-message.right .cloudnode-livechat-message-content {
+  background-color: var(--bs-primary);
+  color: #fff;
+  margin-left: auto;
+}
+
+.cloudnode-livechat-message.right .cloudnode-livechat-message-meta {
+  text-align: right;
+}
+
+.cloudnode-livechat-message-meta {
+  font-size: 75%;
+  opacity: .7;
+  display: none;
+}
+
+.cloudnode-livechat-message:last-of-type .cloudnode-livechat-message-meta {
+  display: block;
+}
+
+.cloudnode-livechat-message-special {
+  opacity: .7;
+  font-size: .9rem;
+  margin: 1rem 0;
+}
+
+.cloudnode-livechat-type {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  padding-right: 1rem;
+}
+
+.cloudnode-livechat-type textarea {
+  border: none;
+  display: block;
+  width: 100%;
+  outline: none !important;
+  padding: 1rem;
+  resize: none;
+}
+
+.cloudnode-livechat-icon-button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: .5rem;
+  opacity: .7;
+  font-size: 1.2rem;
+}
+
+.cloudnode-livechat-widget {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--bs-primary);
+  border-radius: 5rem;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cloudnode-livechat-widget-icon span {
+  line-height: 3.5rem;
+}
+
+.cloudnode-livechat-widget-counter {
+  position: absolute;
+  font-size: .7rem;
+  top: -.125rem;
+  right: -.125rem;
+  line-height: 1;
+  padding: .325rem .475rem;
+  background-color: var(--bs-danger);
+  border-radius: 1rem;
+}
