@@ -62,7 +62,7 @@ function LiveChat () {
 				}
 			});
 			document.body.appendChild(this.element);
-			this.element.classList.remove("collapsed");
+			setTimeout(() => this.element.classList.remove("collapsed"), 150);
 		}
 		else {
 			// continue chat
