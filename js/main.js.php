@@ -224,7 +224,9 @@ const main = {
                         console.error(err)
                     }
                     if (codeEval instanceof Promise)
-                        codeEval.then((d) => doc = doc.replace(match, d));
+                        codeEval.then(function (d) {
+                            doc = doc.replace(match, d);
+                        });
                     else doc = doc.replace(match, codeEval)
                 }
 
