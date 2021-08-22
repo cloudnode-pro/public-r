@@ -222,7 +222,9 @@ const main = {
                     catch (err) {
                         console.error(err)
                     }
-                    doc = doc.replace(match, codeEval)
+                    if (codeEval instanceof Promise)
+                        codeEval.then((d) => doc = doc.replace(match, d));
+                    else doc = doc.replace(match, codeEval)
                 }
 
                 let translationsMatch = doc.match(/{{translate:[^}\n]*}}/g) || [];
