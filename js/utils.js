@@ -81,6 +81,11 @@ main.utils = {
 	        });
 	        return request;
 	    }
+	},
+	playSound: function (path) {
+		const audio = new Audio(path);
+		audio.play();
+		return audio;
 	}
 }
 
