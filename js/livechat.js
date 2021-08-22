@@ -19,12 +19,11 @@ function LiveChat () {
 			title.innerText = typeof main.session.user === "object" ? `Hi, ${main.session.user.name.split(" ")[0]}!` : `Hey 👋`;
 			subtitle.classList.add("opacity-7", "h5", "mb-3");
 			subtitle.innerText = `What can we do to help?`;
-			const cards = new Array(3);
-			for (let i in cards) {
-				const card = cards[i] = document.createElement("div");
+			(3).times((i, max) => {
+				const card = document.createElement("div");
 				body.append(card);
 				card.classList.add("cloudnode-livechat-card", "elevated", "shadow-sm")
-				if (i < cards.length - 1) card.classList.add("mb-3");
+				if (i < max - 1) card.classList.add("mb-3");
 				switch (i) {
 					case 0: {
 						const title = document.createElement("h5");
@@ -57,7 +56,7 @@ function LiveChat () {
 						break;
 					}
 				}
-			}
+			});
 		}
 		else {
 			// continue chat
