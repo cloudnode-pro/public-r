@@ -102,5 +102,9 @@
 	"/status": {
 		"title": "Status",
 		"src": "cmp:pages/status"
+	},
+	"/contact": {
+		"title": "Contact us",
+		"src": "cmp:pages/contact"
 	}
 }
