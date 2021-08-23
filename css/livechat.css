@@ -72,7 +72,7 @@
     border: 1px solid #00000026;
 }
 
-.cloudnode-livechat-message.right .cloudnode-livechat-message-content {
+.cloudnode-livechat-message-group.right .cloudnode-livechat-message-content {
   background-color: var(--bs-primary);
   color: #fff;
   margin-left: auto;
