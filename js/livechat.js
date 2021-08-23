@@ -5,6 +5,12 @@ function LiveChat () {
 		css.href = "/r/css/livechat.css";
 		css.rel = "stylesheet";
 		document.head.appendChild(css);
+
+		const theme = document.createElement("link");
+		theme.href = "/r/css/livechat-dark.css";
+		theme.rel = "stylesheet";
+		theme.media = localStorage.theme !== "dark" ? `(prefers-color-scheme: dark)` : void(0);
+		document.head.appendChild(theme);
 		this.element = document.createElement("div");
 		this.element.classList.add("cloudnode-livechat", "shadow", "collapsed");
 		const stages = [document.createElement("div"), document.createElement("div")];
