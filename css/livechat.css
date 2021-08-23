@@ -8,6 +8,9 @@
   position: fixed;
   bottom: 0;
   right: 0;
+  opacity: 1;
+  transition: bottom 300ms ease, opacity 300ms ease, visibility 300ms ease;
+  visibility: visible;
 }
 
 .cloudnode-livechat:empty {
@@ -195,4 +198,10 @@
 .cloudnode-livechat-stage.active {
   display: block;
   opacity: 1;
+}
+
+.cloudnode-livechat.collapsed {
+  bottom: -680px;
+  opacity: 0;
+  visibility: hidden;
 }
