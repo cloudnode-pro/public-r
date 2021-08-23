@@ -13,66 +13,63 @@ function LiveChat () {
 			stage.classList.add("cloudnode-livechat-stage");
 			stage.setAttribute("data-stage", k);
 			this.element.append(stage);
-			switch (k) {
-				case 1: {
-					break;
-				}
-				default: {
-					const header = document.createElement("div");
-					const body = document.createElement("div");
-					stage.append(header, body);
-					header.classList.add("cloudnode-livechat-header");
-					body.classList.add("cloudnode-livechat-body", "darker");
-					const close = document.createElement("button");
-					const title = document.createElement("h1");
-					const subtitle = document.createElement("p");
-					header.append(close, title, subtitle);
-					close.classList.add("cloudnode-livechat-icon-button");
-					close.innerHTML = `<span class="icon-tt icon-close"></span>`;
-					title.classList.add("d-1", "fw-semibold");
-					title.innerText = typeof main.session.user === "object" ? `Hi, ${main.session.user.name.split(" ")[0]}!` : `Hey 👋`;
-					subtitle.classList.add("opacity-7", "h5", "mb-3", "fw-normal");
-					subtitle.innerText = `What can we do to help?`;
-					(3).times((i, max) => {
-						const card = document.createElement("div");
-						body.append(card);
-						card.classList.add("cloudnode-livechat-card", "elevated", "shadow-sm")
-						if (i < max - 1) card.classList.add("mb-3");
-						switch (i) {
-							case 0: {
-								const title = document.createElement("h5");
-								const subtitle = document.createElement("p");
-								const button = document.createElement("button");
-								card.append(title, subtitle, button);
-								title.innerText = "Start a conversation";
-								subtitle.classList.add("opacity-7");
-								subtitle.innerText = "Click the button to chat with a live person.";
-								button.classList.add("btn", "btn-primary", "px-4", "py-2", "mt-2");
-								button.innerText = "New conversation";
-								break;
-							}
-							case 1: {
-								card.innerHTML = `<h5>Find an answer quickly</h5><form class="input-group mt-3" action="https://${main.company.domain}/support/search"><input type="text" class="form-control" placeholder="Search Help Center" aria-label="Search Help Center" id=q name=q><button class="btn btn-primary" type="submit">Go</button></form>`;
-								break;
-							}
-							case 2: {
-								// todo: fetch status api
-								const title = document.createElement("h5");
-								const subtitle = document.createElement("p");
-								card.append(title, subtitle);
-								title.innerText = `Status: All services operational`;
-								subtitle.classList.add("opacity-7", "mb-0");
-								subtitle.innerText = `Last updated 5 minutes ago. Click for more information.`;
-								card.style.cursor = "pointer";
-								card.addEventListener("click", () => {
-									main.page.pop("/status");
-								})
-								break;
-							}
+			if (k === 1) {
+
+			}
+			else {
+				const header = document.createElement("div");
+				const body = document.createElement("div");
+				stage.append(header, body);
+				header.classList.add("cloudnode-livechat-header");
+				body.classList.add("cloudnode-livechat-body", "darker");
+				const close = document.createElement("button");
+				const title = document.createElement("h1");
+				const subtitle = document.createElement("p");
+				header.append(close, title, subtitle);
+				close.classList.add("cloudnode-livechat-icon-button");
+				close.innerHTML = `<span class="icon-tt icon-close"></span>`;
+				title.classList.add("d-1", "fw-semibold");
+				title.innerText = typeof main.session.user === "object" ? `Hi, ${main.session.user.name.split(" ")[0]}!` : `Hey 👋`;
+				subtitle.classList.add("opacity-7", "h5", "mb-3", "fw-normal");
+				subtitle.innerText = `What can we do to help?`;
+				(3).times((i, max) => {
+					const card = document.createElement("div");
+					body.append(card);
+					card.classList.add("cloudnode-livechat-card", "elevated", "shadow-sm")
+					if (i < max - 1) card.classList.add("mb-3");
+					switch (i) {
+						case 0: {
+							const title = document.createElement("h5");
+							const subtitle = document.createElement("p");
+							const button = document.createElement("button");
+							card.append(title, subtitle, button);
+							title.innerText = "Start a conversation";
+							subtitle.classList.add("opacity-7");
+							subtitle.innerText = "Click the button to chat with a live person.";
+							button.classList.add("btn", "btn-primary", "px-4", "py-2", "mt-2");
+							button.innerText = "New conversation";
+							break;
 						}
-					});
-					break;
-				}
+						case 1: {
+							card.innerHTML = `<h5>Find an answer quickly</h5><form class="input-group mt-3" action="https://${main.company.domain}/support/search"><input type="text" class="form-control" placeholder="Search Help Center" aria-label="Search Help Center" id=q name=q><button class="btn btn-primary" type="submit">Go</button></form>`;
+							break;
+						}
+						case 2: {
+							// todo: fetch status api
+							const title = document.createElement("h5");
+							const subtitle = document.createElement("p");
+							card.append(title, subtitle);
+							title.innerText = `Status: All services operational`;
+							subtitle.classList.add("opacity-7", "mb-0");
+							subtitle.innerText = `Last updated 5 minutes ago. Click for more information.`;
+							card.style.cursor = "pointer";
+							card.addEventListener("click", () => {
+								main.page.pop("/status");
+							})
+							break;
+						}
+					}
+				});
 			}
 		}
 		document.body.appendChild(this.element);
