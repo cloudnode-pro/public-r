@@ -11,7 +11,7 @@ function LiveChat () {
 		for (let k in stages) {
 			const stage = stages[k];
 			stage.classList.add("cloudnode-livechat-stage");
-			stage["data-stage"] = k;
+			stage.setAttribute("data-stage", k);
 			this.element.append(stage);
 			switch (k) {
 				case 1: {
