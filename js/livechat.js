@@ -134,7 +134,6 @@ function LiveChatMessage (id, room, payload, sender, sent, seen, side) {
 		switch (this.type) {
 			case "normal":
 				d.classList.add("cloudnode-livechat-message");
-				if (side === "right") d.classList.add(side);
 				const content = document.createElement("div");
 				content.classList.add("cloudnode-livechat-message-content");
 				content.innerText = this.content;
