@@ -9,7 +9,7 @@ function LiveChat () {
 		const theme = document.createElement("link");
 		theme.href = "/r/css/livechat-dark.css";
 		theme.rel = "stylesheet";
-		theme.media = localStorage.theme !== "dark" ? `(prefers-color-scheme: dark)` : void(0);
+		localStorage.theme !== "dark" ? theme.media = `(prefers-color-scheme: dark)` : void(0);
 		document.head.appendChild(theme);
 		this.element = document.createElement("div");
 		this.element.classList.add("cloudnode-livechat", "shadow", "collapsed");
