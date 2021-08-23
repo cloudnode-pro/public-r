@@ -14,7 +14,7 @@ function LiveChat () {
 			stage.setAttribute("data-stage", k);
 			this.element.append(stage);
 			if (+k === 1) {
-				if (typeof main.sockets.livechat === "object" || main.sockets.livechat.connected) stage.classList.add("active");
+				if (typeof main.sockets.livechat === "object" && main.sockets.livechat.connected) stage.classList.add("active");
 			}
 			else {
 				if (typeof main.sockets.livechat !== "object" || !main.sockets.livechat.connected) stage.classList.add("active");
