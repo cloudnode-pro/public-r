@@ -35,7 +35,7 @@ function LiveChat () {
 				header.append(close, title, subtitle);
 				close.classList.add("cloudnode-livechat-icon-button");
 				close.innerHTML = `<span class="icon-tt icon-close"></span>`;
-				close.addEventListener("click", this.collapse);
+				close.addEventListener("click", collapse;
 				title.classList.add("d-1", "fw-semibold");
 				title.innerText = typeof main.session.user === "object" ? `Hi, ${main.session.user.name.split(" ")[0]}!` : `Hey 👋`;
 				subtitle.classList.add("opacity-7", "h5", "mb-3", "fw-normal");
@@ -91,9 +91,10 @@ function LiveChat () {
 			// continue
 		}
 	}
-	this.collapse = function () {
+	function collapse () {
 		this.element.classList.add("collapsed");
 	}
+	this.collapse = collapse;
 	this.handlers = {
 		message: function (message, side) {
 			const lastMessage = this.lastMessage;
