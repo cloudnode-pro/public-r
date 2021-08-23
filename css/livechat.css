@@ -12,6 +12,7 @@
 
 .cloudnode-livechat:empty {
   background: #ddd;
+  border-top: 3px solid var(--bs-primary);
 }
 
 .cloudnode-livechat:empty::before {
