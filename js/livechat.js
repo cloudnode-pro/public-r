@@ -13,6 +13,7 @@ function LiveChat () {
 			stage.classList.add("cloudnode-livechat-stage");
 			stage.setAttribute("data-stage", k);
 			this.element.append(stage);
+			console.log(k, k === 1);
 			if (k === 1) {
 
 			}
