@@ -1,22 +1,13 @@
-.cloudnode-livechat.collapsed {
-  bottom: -680px;
-  opacity: 0;
-  visibility: hidden;
-}
-
 .cloudnode-livechat {
   border-radius: .5rem;
-  margin: 1.5rem;
+  margin: 1rem;
   overflow: hidden;
   border: 1px solid #eee;
   width: 420px;
-  height: 656px;
-  position: fixed;
+  height: 640px;
+  position: absolute;
   bottom: 0;
-  opacity: 1;
   right: 0;
-  transition: bottom 300ms ease, opacity 300ms ease, visibility 300ms ease;
-  visibility: visible;
 }
 
 .cloudnode-livechat-header {
@@ -70,39 +61,48 @@
 }
 
 .cloudnode-livechat-message-content {
-    background-color: #e0e0e0;
-    padding: 1rem;
-    border-radius: .25rem;
-    max-width: 80%;
+    padding: .5rem 1rem;
+    border-radius: 1.25rem;
+    max-width: calc(100% - 3rem);
     width: max-content;
-    margin-bottom: .5rem;
-    font-size: .9rem;
+    margin-bottom: .35rem;
+    margin-left: 2.75rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    border: 1px solid #00000026;
 }
 
 .cloudnode-livechat-message.right .cloudnode-livechat-message-content {
   background-color: var(--bs-primary);
   color: #fff;
   margin-left: auto;
+  border: transparent;
+  max-width: calc(100% - .5rem);
 }
 
-.cloudnode-livechat-message.right .cloudnode-livechat-message-meta {
-  text-align: right;
+.cloudnode-livechat-message-group {
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.cloudnode-livechat-message-meta {
-  font-size: 75%;
-  opacity: .7;
-  display: none;
-}
-
-.cloudnode-livechat-message:last-of-type .cloudnode-livechat-message-meta {
+.cloudnode-livechat-message-group.left::before {
+  content: "";
+  position: absolute;
   display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  background-image: url("https://cloudnode.pro/r/img/logo/icon.png");
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
 }
 
 .cloudnode-livechat-message-special {
   opacity: .7;
-  font-size: .9rem;
+  font-size: .75rem;
   margin: 1rem 0;
+  text-align: center;
 }
 
 .cloudnode-livechat-type {
