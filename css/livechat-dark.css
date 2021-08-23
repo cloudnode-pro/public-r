@@ -4,6 +4,7 @@
 
 .cloudnode-livechat:empty::before {
   border: 3px solid #ffffff12;
+  border-top: 3px solid var(--bs-primary);
 }
 
 .cloudnode-livechat-body.darker {
