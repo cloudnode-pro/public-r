@@ -6,22 +6,22 @@
 
 .toastui-editor-dark .toastui-editor-md-container,
 .toastui-editor-dark .toastui-editor-ww-container {
-  background-color: #121212;
+  background-color: #202125;
 }
 
 .toastui-editor-dark .toastui-editor-defaultUI-toolbar {
-  background-color: #232428;
-  border-bottom-color: #303238;
+  background-color: #121212;
+  border-bottom-color: #34353c;
 }
 
 .toastui-editor-dark .toastui-editor-toolbar-icons {
   background-position-y: -49px;
-  border-color: #232428;
+  border-color: #121212;
 }
 
 .toastui-editor-dark .toastui-editor-toolbar-icons:not(:disabled):hover {
-  background-color: #36383f;
-  border-color: #36383f;
+  background-color: #1e1e1e;
+  border-color: #1e1e1e;
 }
 
 .toastui-editor-dark .toastui-editor-toolbar-divider {
@@ -76,8 +76,8 @@
 }
 
 .toastui-editor-dark .toastui-editor-mode-switch .tab-item.active {
-  border-top-color: #121212;
-  background-color: #121212;
+  border-top-color: #202125;
+  background-color: #202125;
   color: #eee;
 }
 
@@ -181,8 +181,8 @@
 }
 
 .toastui-editor-dark .toastui-editor-md-tab-container {
-  background-color: #232428;
-  border-bottom-color: #303238;
+  background-color: #121212;
+  border-bottom-color: #34353c;
 }
 
 .toastui-editor-dark .toastui-editor-md-tab-container .tab-item {
@@ -192,8 +192,8 @@
 }
 
 .toastui-editor-dark .toastui-editor-md-tab-container .tab-item.active {
-  border-bottom-color: #121212;
-  background-color: #121212;
+  border-bottom-color: #202125;
+  background-color: #202125;
   color: #eee;
 }
 
@@ -348,15 +348,15 @@
 .toastui-editor-dark .toastui-editor-contents menu,
 .toastui-editor-dark .toastui-editor-contents ol,
 .toastui-editor-dark .toastui-editor-contents dir {
-  color: #55575f;
+  color: #ffffff4d;
 }
 
 .toastui-editor-dark .toastui-editor-contents ul > li::before {
-  background-color: #55575f;
+  background-color: #ffffff4d;
 }
 
 .toastui-editor-dark .toastui-editor-contents hr {
-  border-color: #55575f;
+  border-color: #ffffff4d;
 }
 
 .toastui-editor-dark .toastui-editor-contents a {
@@ -389,12 +389,12 @@
 .toastui-editor-dark .toastui-editor-md-link,
 .toastui-editor-dark .toastui-editor-md-table,
 .toastui-editor-dark .toastui-editor-md-block-quote {
-  color: #55575f;
+  color: #ffffff4d;
 }
 
 .toastui-editor-dark .toastui-editor-md-meta,
 .toastui-editor-dark .toastui-editor-md-html {
-  color: #55575f;
+  color: #ffffff4d;
 }
 
 .toastui-editor-dark .toastui-editor-md-link.toastui-editor-md-link-url.toastui-editor-md-marked-text {
