@@ -230,7 +230,14 @@ main.api = {
         post: function (category, {title, content, tags}, callback = new Function) {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`, {
                 credentials: "include",
-                method: "post"
+                method: "post",headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: title,
+                    content: content,
+                    tags: tags
+                })
             })
             .then(res => res.json().then(data => callback(data, res)))
         }
