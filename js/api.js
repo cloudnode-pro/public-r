@@ -231,7 +231,8 @@ main.api = {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`, {
                 credentials: "include",
                 method: "post",headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Request-Headers': "*"
                 },
                 body: JSON.stringify({
                     title: title,
