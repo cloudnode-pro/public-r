@@ -103,7 +103,7 @@
 }
 
 .toastui-editor-dark .toastui-editor-popup-body input[type='text']:focus {
-  outline-color: var(--bs-primary);
+  border-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .toastui-editor-popup-body input[type='text'].disabled {
@@ -337,11 +337,11 @@
 }
 
 .toastui-editor-dark table.ProseMirror-selectednode {
-  outline-color: var(--bs-primary);
+  border-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .html-block.ProseMirror-selectednode {
-  outline-color: var(--bs-primary);
+  border-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .toastui-editor-contents ul,
