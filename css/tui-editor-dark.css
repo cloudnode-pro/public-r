@@ -41,7 +41,7 @@
 }
 
 .toastui-editor-dark .toastui-editor-defaultUI-toolbar .scroll-sync.active::before {
-  color: #67ccff;
+  color: var(--bs-primary);
 }
 
 .toastui-editor-dark .toastui-editor-defaultUI-toolbar .switch {
@@ -57,7 +57,7 @@
 }
 
 .toastui-editor-dark .toastui-editor-defaultUI-toolbar input:checked + .switch::before {
-  background-color: #67ccff;
+  background-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .toastui-editor-main .toastui-editor-md-splitter {
@@ -71,7 +71,7 @@
 
 .toastui-editor-dark .toastui-editor-mode-switch .tab-item {
   border-color: #393b42;
-  background-color: #232428;
+  background-color: #121212;
   color: #757a86;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .toastui-editor-dark .toastui-editor-popup-body input[type='text']:focus {
-  outline-color: #67ccff;
+  outline-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .toastui-editor-popup-body input[type='text'].disabled {
@@ -122,8 +122,8 @@
 }
 
 .toastui-editor-dark .toastui-editor-popup-add-image .toastui-editor-tabs .tab-item.active {
-  color: #67ccff;
-  border-bottom-color: #67ccff;
+  color: var(--bs-primary);
+  border-bottom-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .toastui-editor-popup-body .toastui-editor-file-name {
@@ -153,12 +153,12 @@
 
 .toastui-editor-dark.toastui-editor-defaultUI .toastui-editor-ok-button {
   color: #121212;
-  background-color: #67ccff;
+  background-color: var(--bs-primary);
 }
 
 .toastui-editor-dark.toastui-editor-defaultUI .toastui-editor-ok-button:hover {
   color: #121212;
-  background-color: #32baff;
+  background-color: #5773e8;
 }
 
 .toastui-editor-dark .toastui-editor-popup-add-table .toastui-editor-table-cell {
@@ -187,7 +187,7 @@
 
 .toastui-editor-dark .toastui-editor-md-tab-container .tab-item {
   border-color: #393b42;
-  background-color: #2d2f34;
+  background-color: #121212;
   color: #757a86;
 }
 
@@ -337,11 +337,11 @@
 }
 
 .toastui-editor-dark table.ProseMirror-selectednode {
-  outline-color: #67ccff;
+  outline-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .html-block.ProseMirror-selectednode {
-  outline-color: #67ccff;
+  outline-color: var(--bs-primary);
 }
 
 .toastui-editor-dark .toastui-editor-contents ul,
