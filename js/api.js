@@ -230,16 +230,11 @@ main.api = {
         post: function (category, {title, content, tags}, callback = new Function) {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`, {
                 credentials: "include",
-                method: "post",headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Request-Headers': '*',
-                    'Access-Control-Allow-Headers': '*'
-                },
-                body: JSON.stringify({
+                body: new URLSearchParams(Object.entries({
                     title: title,
                     content: content,
                     tags: tags
-                })
+                })).toString()
             })
             .then(res => res.json().then(data => callback(data, res)))
         }
