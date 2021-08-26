@@ -232,8 +232,7 @@ main.api = {
                 credentials: "include",
                 method: "post"
             })
-            .then(res => res.json())
-            .then(data => callback(data, res));
+            .then(res => res.json().then(data => callback(data, res)))
         }
     }
 }
