@@ -226,6 +226,14 @@ main.api = {
             tag: function (tag, callback = new Function) {
                 fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/search?tag=${encodeURIComponent(tag)}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
             }
+        },
+        post: function (category, {title, content, tags}, callback = new Function) {
+            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`, {
+                credentials: "include",
+                method: "post"
+            })
+            .then(res => res.json())
+            .then(data => callback(data, res));
         }
     }
 }
