@@ -231,6 +231,9 @@ main.api = {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`, {
                 credentials: "include",
                 method: "post",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
                 body: new URLSearchParams(Object.entries({
                     title: title,
                     content: content,
