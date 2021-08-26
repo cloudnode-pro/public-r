@@ -230,6 +230,7 @@ main.api = {
         post: function (category, {title, content, tags}, callback = new Function) {
             fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/support/${category}`, {
                 credentials: "include",
+                method: "post",
                 body: new URLSearchParams(Object.entries({
                     title: title,
                     content: content,
