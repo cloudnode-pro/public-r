@@ -232,7 +232,8 @@ main.api = {
                 credentials: "include",
                 method: "post",headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Request-Headers': "*"
+                    'Access-Control-Request-Headers': '*',
+                    'Access-Control-Allow-Headers': '*'
                 },
                 body: JSON.stringify({
                     title: title,
