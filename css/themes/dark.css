@@ -174,7 +174,6 @@ input:-webkit-autofill:focus, textarea:-webkit-autofill:focus, select:-webkit-au
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
   border-color: transparent;
-  isolation: isolate;
   color: #fff;
 }
 
@@ -183,3 +182,7 @@ input:-webkit-autofill:focus, textarea:-webkit-autofill:focus, select:-webkit-au
   background-color: rgb(255 255 255 / 10%);
   border-color: transparent transparent #fff;
 }
+
+.table>:not(caption)>*>* {
+    border: 1px solid #fff3
+ }
