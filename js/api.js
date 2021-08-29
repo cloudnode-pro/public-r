@@ -244,5 +244,10 @@ main.api = {
             })
             .then(res => res.json().then(data => callback(data, res)))
         }
+    },
+    cdn: {
+        files: function () {},
+        file: function () {},
+        stats: function () {}
     }
 }
