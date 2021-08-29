@@ -177,8 +177,8 @@ input:-webkit-autofill:focus, textarea:-webkit-autofill:focus, select:-webkit-au
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-  border-color: transparent;
-  color: #fff;
+  border-color: #ffffff08 #ffffff08 transparent;
+  color: #fffc;
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
