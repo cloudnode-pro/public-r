@@ -248,6 +248,8 @@ main.api = {
     cdn: {
         files: function () {},
         file: function () {},
-        stats: function () {}
+        stats: function (callback = new Function) {
+            fetch(`https://${main.endpoints.cdn}/stats`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
+        }
     }
 }
