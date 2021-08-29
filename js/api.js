@@ -99,7 +99,9 @@ main.api = {
         })
     },
     account: {
-        details: function () {},
+        details: function (callback) {
+            fetch(`https://${main.endpoints.api}/${main.apiData.branches.latest}/account`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
+        },
         email: {
             confirm: function (code, callback = new Function) {
                 $.post({
