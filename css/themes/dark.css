@@ -184,5 +184,5 @@ input:-webkit-autofill:focus, textarea:-webkit-autofill:focus, select:-webkit-au
 }
 
 .table>:not(caption)>*>* {
-    border: 1px solid #fff3
+    border-top: 1px solid #fff3
  }
