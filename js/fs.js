@@ -1,4 +1,13 @@
-function CdnApi (api, ep = `cdn.${location.hostname}`, enabled = true) {
+/* Copyright (C) 2021 Cloudnode - All Rights Reserved
+ * Any use, distribution or modification of this code
+ * is subject to the terms of the provided license.
+ *
+ * The license is available at the root (/) of the
+ * repository. If not, please write to:
+ * support@cloudnode.pro
+ */
+
+ function CdnApi (api, ep = `cdn.${location.hostname}`, enabled = true) {
   this.api = api;
   this.endpoint = ep;
   this.enabled = true;
