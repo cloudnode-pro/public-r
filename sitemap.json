@@ -106,5 +106,9 @@
 	"/contact": {
 		"title": "Contact us",
 		"src": "cmp:pages/contact"
+	},
+	"/cloud": {
+		"title": "Cloud",
+		"src": "cmp:pages/cloud"
 	}
 }
