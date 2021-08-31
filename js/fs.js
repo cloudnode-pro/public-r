@@ -22,6 +22,15 @@ function CloudnodeFS (api) {
     this.mode = mode;
     this.created = new Date(created);
     this.size = size;
+    this.toObject = function () {
+      return {
+        path: this.path,
+        basename: this.basename,
+        mode: this.mode,
+        created: this.created,
+        size: this.size
+      };
+    }
   }
   this.FileCollection = function (files = []) {
     if (!(files instanceof Array)) throw new Error(`@files must be Array(); ${files?.constructor?.name} given`)
@@ -40,7 +49,7 @@ function CloudnodeFS (api) {
     this.forEach = function (fn = new Function) {
       for (let i in this) {
         const file = this[i];
-        if (file instanceof fs.File) fn(file, +i, this);
+        if (file instanceof fs.File || file instanceof fs.Directory) fn(file, +i, this);
       }
     }
     this.get = function (basename) {
@@ -54,6 +63,18 @@ function CloudnodeFS (api) {
     this.basename = path.slice(path.length - 1)[0];
     this.files = collection;
     this.parent = null;
+    this.toObject = function (options) {
+      if (typeof options !== "object") options = {};
+      const slashes = options.slashes === true;
+      const fullPath = options.fullPath === true;
+      const dirName = slashes ? this.basename + "/" : (fullPath ? this.path : this.basename);
+      let obj = {};
+      this.files.forEach(file => {
+        const fileName = slashes ? file.basename + "/" : (fullPath ? file.path : file.basename);
+        obj[fileName] = file.toObject();
+      });
+      return obj;
+    }
   }
   this.link = function (files) {
     if (files instanceof fs.File) files = new fs.FileCollection([files]);
