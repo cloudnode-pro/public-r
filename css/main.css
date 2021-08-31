@@ -932,3 +932,62 @@ pre code[class^=language] {
 .table {
 	color: inherit;
 }
+
+.filemanager .card-body {
+  display: flex;
+}
+
+.filemanager-tab {
+  appearance: none;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem .6rem;
+  border-radius: .25rem;
+  vertical-align: middle;
+  line-height: 1.4;
+  font-size: .92rem;
+}
+
+.filemanager-sidebar {
+  width: 200px;
+  border-right: 1px solid #ffffff1c;
+}
+
+.filemanager-tabs {
+  padding: .3rem;
+}
+
+.filemanager-tab.active {
+  background-color: #8ab4f826;
+  color: #8ab4f8;
+}
+
+.filemanager-tab .icon {
+  font-size: 1.3rem;
+  margin-right: .5rem;
+}
+
+.filemanager-tab .icon, .filemanager-tab .text {
+  vertical-align: middle;
+  opacity: 0.8;
+}
+
+.filemanager-tab.active .text, .filemanager-tab.active .icon {
+  opacity: 1;
+}
+
+.btn-transparent {color: #8ab4f8;border: 1px solid rgb(255 255 255 / 10%);}
+
+.btn-transparent:hover {
+  color: #87b5ff;
+  background-color: rgb(255 255 255 / 5%);
+}
+
+.btn-transparent:focus {
+  box-shadow: 0 0 0 0.25rem rgb(138 180 248 / 10%);
+  border: 1px solid;
+}
