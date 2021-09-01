@@ -107,10 +107,12 @@ function CloudnodeFS (api) {
 }
 
 function FileManager (el, fs = new CloudnodeFS()) {
-  this.element = el;
-  this.sidebar = el.querySelector(".filemanager-sidebar");
-  this.body = el.querySelector(".filemanager-body");
-  this.nav = el.querySelector(".breadcrumb");
+  this.elements = {
+    root: el,
+    sidebar: el.querySelector(".filemanager-sidebar"),
+    body: el.querySelector(".filemanager-body"),
+    nav: el.querySelector(".breadcrumb")
+  };
 
   this.renderFile = function (file) {
     const d = document.createElement("div");
