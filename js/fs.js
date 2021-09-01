@@ -106,7 +106,7 @@ function CloudnodeFS (api) {
   this.tree = new fs.Directory({name:"@root", collection: new fs.FileCollection()});
 }
 
-function FileManager (el, fs = new CloudnodeFS()) {
+function FileManager (el, fs = new CloudnodeFS(), options) {
   this.elements = {
     root: el,
     sidebar: el.querySelector(".filemanager-sidebar"),
@@ -117,6 +117,30 @@ function FileManager (el, fs = new CloudnodeFS()) {
   this.renderFile = function (file) {
     const d = document.createElement("div");
     d.classList.add("filemanager-file");
+    const icon = document.createElement("div");
+    icon.classList.add("filemanager-file-icon");
+    d.append(icon);
+  }
+  this.getIcon = function (file) {
+    const icon = document.createElement("img");
+    if (file instanceof fs.Directory) {
+      if (file.basename === ".backups") icon.src = `${options.icons}/places/default-folder-recent.svg`;
+      else if (file.basename.toLowerCase() === "documents") icon.src = `${options.icons}/places/default-folder-documents.svg`;
+      else if (file.basename.toLowerCase() === "downloads") icon.src = `${options.icons}/places/default-folder-download.svg`;
+      else if (file.basename.toLowerCase() === "music") icon.src = `${options.icons}/places/default-folder-music.svg`;
+      else if (["pictures", "photos"].includes(file.basename.toLowerCase())) icon.src = `${options.icons}/places/default-folder-picture.svg`;
+      else if (["videos", "movies", "films"].includes(file.basename.toLowerCase())) icon.src = `${options.icons}/places/default-folder-videos.svg`;
+      else if (["public_html", "html", "htdocs", "www"].includes(file.basename.toLowerCase())) icon.src = `${options.icons}/places/folder-html.svg`;
+      else if (["$recycle.bin", "rubbish bin"].includes(file.basename.toLowerCase())) icon.src = file.length === 0 ? `${options.icons}/places/folder-trash.svg` : `${options.icons}/places/folder-trash-full.svg`;
+      else if (file.basename.endsWith(".srv")) icon.src = `${options.icons}/places/network-server.svg`;
+      else if (file.mode === 1) icon.src = `${options.icons}/places/default-folder-publicshare.svg`;
+    }
+    else {
+      icon.src = `${options.icons}/mimetypes/${file.mimetype.toLowerCase().replace("/", "-")}.svg`;
+    }
+    icon.addEventListener("error", () => icon.src = `${options.icons}/mimetypes/text-x-generic.svg`);
+    icon.alt = file.basename;
+    return icon;
   }
 }
 
