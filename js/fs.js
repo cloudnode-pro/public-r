@@ -134,6 +134,7 @@ function FileManager (el, fs = new CloudnodeFS(), options) {
       else if (["$recycle.bin", "rubbish bin"].includes(file.basename.toLowerCase())) icon.src = file.length === 0 ? `${options.icons}/places/folder-trash.svg` : `${options.icons}/places/folder-trash-full.svg`;
       else if (file.basename.endsWith(".srv")) icon.src = `${options.icons}/places/network-server.svg`;
       else if (file.mode === 1) icon.src = `${options.icons}/places/default-folder-publicshare.svg`;
+      else icon.src = `${options.icons}/places/default-folder.svg`;
     }
     else {
       icon.src = `${options.icons}/mimetypes/${file.mimetype.toLowerCase().replace("/", "-")}.svg`;
