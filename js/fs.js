@@ -119,6 +119,7 @@ function FileManager (el, fs = new CloudnodeFS(), options) {
     d.classList.add("filemanager-file");
     const icon = document.createElement("div");
     icon.classList.add("filemanager-file-icon");
+    icon.append(this.getIcon(file));
     d.append(icon);
     const data = document.createElement("div");
     data.classList.add("filemanager-file-data");
