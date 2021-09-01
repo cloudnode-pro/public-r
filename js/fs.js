@@ -131,6 +131,7 @@ function FileManager (el, fs = new CloudnodeFS(), options) {
     if (file instanceof fs.Directory) meta.innerHTML = `${file.files.length} item${file.files.length === 1 ? "" : "s"}`;
     else meta.innerHTML = `${main.utils.readableBytes(file.size)}`;
     data.append(name, meta);
+    return d;
   }
   this.getIcon = function (file) {
     const icon = document.createElement("img");
