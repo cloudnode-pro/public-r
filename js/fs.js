@@ -15,13 +15,14 @@
 function CloudnodeFS (api) {
   const fs = this;
   if (api instanceof CdnApi) this.api = api;
-  this.File = function ({name, mode, created, size}) {
+  this.File = function ({name, mode, created, size, mimetype}) {
     const path = name.split("/");
     this.path = name;
     this.basename = path.slice(path.length - 1)[0];
     this.mode = mode;
     this.created = new Date(created);
     this.size = size;
+    this.mimetype = mimetype;
     this.toObject = function () {
       return {
         path: this.path,
