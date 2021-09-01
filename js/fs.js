@@ -119,5 +119,6 @@ function FileManager (el, fs = new CloudnodeFS()) {
 
 main.fs = {
   driver: CloudnodeFS,
-  cdn: CdnApi
+  cdn: CdnApi,
+  fm: FileManager
 }
