@@ -246,7 +246,11 @@ main.api = {
         }
     },
     cdn: {
-        files: function () {},
+        files: function (path = "/", callback = new Function) {
+            if (path instanceof Array) path = path.join("/");
+            while (path.startsWith("/")) path = path.substr(1);
+            fetch(`https://${main.endpoints.cdn}/files/${path}`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
+        },
         file: function () {},
         stats: function (callback = new Function) {
             fetch(`https://${main.endpoints.cdn}/stats`, {credentials:"include"}).then(f => f.json().then(data => callback(data, f)));
