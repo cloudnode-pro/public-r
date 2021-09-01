@@ -120,6 +120,17 @@ function FileManager (el, fs = new CloudnodeFS(), options) {
     const icon = document.createElement("div");
     icon.classList.add("filemanager-file-icon");
     d.append(icon);
+    const data = document.createElement("div");
+    data.classList.add("filemanager-file-data");
+    d.append(data);
+    const name = document.createElement("span");
+    name.classList.add("name");
+    name.innerHTML = file.basename;
+    const meta = document.createElement("span");
+    meta.classList.add("meta");
+    if (file instanceof fs.Directory) meta.innerHTML = `${file.files.length} item${file.files.length === 1 ? "" : "s"}`;
+    else meta.innerHTML = `${main.utils.readableBytes(file.size)}`;
+    data.append(name, meta);
   }
   this.getIcon = function (file) {
     const icon = document.createElement("img");
