@@ -980,7 +980,33 @@ pre code[class^=language] {
   opacity: 1;
 }
 
-.btn-transparent {color: #8ab4f8;border: 1px solid rgb(255 255 255 / 10%);}
+.filemanager-file-data span {
+	display: block;
+	text-align: center;
+	font-size: .85rem;
+}
+
+.filemanager-body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	max-width: calc(100% - 200px);
+}
+
+.filemanager-file {
+	margin: .5rem .8rem;
+}
+
+.filemanager-file-data .meta {
+	opacity: .5;
+}
+
+.btn-transparent {
+	color: #8ab4f8;
+	border: 1px solid rgb(255 255 255 / 10%);
+}
 
 .btn-transparent:hover {
   color: #87b5ff;
