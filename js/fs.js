@@ -105,6 +105,18 @@ function CloudnodeFS (api) {
   this.tree = new fs.Directory({name:"@root", collection: new fs.FileCollection()});
 }
 
+function FileManager (el, fs = new CloudnodeFS()) {
+  this.element = el;
+  this.sidebar = el.querySelector(".filemanager-sidebar");
+  this.body = el.querySelector(".filemanager-body");
+  this.nav = el.querySelector(".breadcrumb");
+
+  this.renderFile = function (file) {
+    const d = document.createElement("div");
+    d.classList.add("filemanager-file");
+  }
+}
+
 main.fs = {
   driver: CloudnodeFS,
   cdn: CdnApi
