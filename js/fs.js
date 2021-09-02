@@ -192,7 +192,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         name = `${name} (${i})`;
       }
       const dir = fs.mkdir(this.currentLocation, new fs.Directory({name: this.currentLocation.path + (this.currentLocation.path.endsWith("/") ? "" : "/") + name, collection: new fs.FileCollection()}))
-      this.navigate(dir);
+      location.hash = `#browse=${dir.path}`;
     })
   }
 
