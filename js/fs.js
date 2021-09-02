@@ -183,8 +183,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       const path = dir.path.split("/");
       let html = "";
       for (let i in path) {
-        const fullPath = path.slice(0, +i + 1).join("/");
-        console.log(path, +i, path.slice(0, +i + 1), fullPath);
+        const fullPath = "/" + path.slice(1, +i + 1).join("/");
         if (+i === path.length - 1) html += `<li class="breadcrumb-item active" aria-current="page">${["", "/"].includes(path[i]) ? "Home" : path[i]}</li>`;
         else html += `<li class="breadcrumb-item"><a href="#browse=${fullPath}">${["", "/"].includes(path[i]) ? "Home" : path[i]}</a></li>`;
       }
