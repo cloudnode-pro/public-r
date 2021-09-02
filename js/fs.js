@@ -82,7 +82,9 @@ function CloudnodeFS (api) {
     else if (files instanceof Array) files = new fs.FileCollection(files);
     if (!(files instanceof fs.FileCollection)) throw new Error(`Cannot construct fs.FileCollection() from @files. Acceptable options for @files are Array(), fs.File() and fs.FileCollection(); ${files?.constructor?.name} given`);
     files.forEach(file => {
-      const path = file.path.split("/");
+      let path = file.path;
+      while (path.startsWith("/")) path = path.substr(1);
+      path = path.split("/");
       let parent = fs.tree;
       for (let i in path) {
         const segment = path[i];
