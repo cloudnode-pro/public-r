@@ -137,7 +137,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         return;
       }
       else if (+i === p.length - 1) {
-        if (file instanceof fs.File) fm.openEditor(file);
+        if (file instanceof fs.File) this.openEditor(file);
         return file;
       }
       else throw new Error("Unexpected situation");
