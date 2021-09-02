@@ -189,6 +189,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         if (i === path.length - 1) html += `<li class="breadcrumb-item active" aria-current="page">${path[i]}</li>`;
         else html += `<li class="breadcrumb-item"><a href="#browse=${fullPath}">${path[i]}</a></li>`;
       }
+      this.elements.nav.innerHTML = html;
     }
   }
 
