@@ -163,7 +163,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     setTimeout(() => modal._element.querySelector("input").focus(), 350);
     modal._element.querySelector("input").addEventListener("input", () => {
       modal._element.querySelector(".form-text").innerHTML = "";
-      let name = modal._element.querySelector("input").value.trim().replace(/\s+/g, " ");
+      let name = modal._element.querySelector("input").value.replace(/\s+/g, " ").trim();
       if (name.includes("../")) {
         modal._element.querySelector(".form-text").innerHTML = `Folder names cannot contain "../".`;
         modal._element.querySelector("input").value = name.replace(/\.\.\//g, "");
@@ -184,7 +184,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     })
     modal._element.querySelector("form").addEventListener("submit", (e) => {
       e.preventDefault();
-      let name = modal._element.querySelector("input").value.trim().replace(/\s+/g, " ");
+      let name = modal._element.querySelector("input").value.replace(/\s+/g, " ").trim();
       if (["", " "].includes(name)) name === "New Folder";
       if (this.currentLocation.files.get(name) !== undefined) {
         let i = 1;
