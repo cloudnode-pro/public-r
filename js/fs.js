@@ -302,12 +302,18 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     // events
     d.addEventListener("dblclick", () => location.hash = `#browse=${file.path}`);
     d.addEventListener("click", (e) => {
-      fm.elements.body.querySelectorAll(".filemanager-files .filemanager-file.selected").forEach((e) => e.classList.remove("selected"));
-      e.target.classList.add("selected");
+      if (!e.ctrlKey) {
+        fm.elements.body.querySelectorAll(".filemanager-files .filemanager-file.selected").forEach((e) => e.classList.remove("selected"));
+        this.selected = new fs.FileCollection();
+      }
+      e.target.classList.toggle("selected");
+      if (this.selected.get(file.basename) === undefined) this.selected.push(file);
+      else this.selected.unlink(file);
     });
 
     return d;
   }
+  this.selected = new fs.FileCollection();
   this.getIcon = function (file) {
     const icon = document.createElement("img");
     if (file instanceof fs.Directory) {
