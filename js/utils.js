@@ -112,7 +112,6 @@ main.page.modal = function ({header, body, footer, options}) {
     	close: true,
     	text: "Close"
     }];
-    else footer.buttons = [];
     if (footer.buttons.length > 0) {
     	html += `<div class="modal-footer">`;
     	for (let button of footer.buttons) html += `<button type="button" class="${typeof button.class === "string" ? button.class : "btn btn-secondary"}"${typeof button.close === "boolean" && button.close === false ? "" : ' data-bs-dismiss="modal"'}>${button.text}</button>`
