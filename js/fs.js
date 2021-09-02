@@ -106,10 +106,10 @@ function CloudnodeFS (api) {
   this.tree = new fs.Directory({name:"@root", collection: new fs.FileCollection()});
 }
 
-function FileManager (el, fs = new CloudnodeFS(), options) {
+function FileManager (el, fs = new CloudnodeFS(), options = {}) {
 
   this.options = options;
-  this.options.sortFiles = this.options.sortFiles === undefined ? "name+" : this.options.sortFiles;
+  this.options.sortFiles = options.sortFiles === undefined ? "name+" : options.sortFiles;
 
   this.elements = {
     root: el,
