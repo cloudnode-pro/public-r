@@ -92,7 +92,6 @@ function CloudnodeFS (api) {
         let nDir = parent.files.get(segment);
         if (!(nDir instanceof fs.Directory) && +i < path.length - 1) {
           const dir = fs.mkdir(parent, new fs.Directory({name: "/" + path.slice(0, +i + 1).join("/"), collection: new fs.FileCollection()}));
-          console.log(dir, path.slice(0, +i + 1), +i)
           parent = dir;
         }
         else parent.files.push(file, parent);
@@ -186,6 +185,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       let html = "";
       for (let i in path) {
         const fullPath = path.slice(0, i).join("/");
+        console.log(fullPath, i, pathn.length);
         if (i === path.length - 1) html += `<li class="breadcrumb-item active" aria-current="page">${path[i]}</li>`;
         else html += `<li class="breadcrumb-item"><a href="#browse=${fullPath}">${path[i]}</a></li>`;
       }
