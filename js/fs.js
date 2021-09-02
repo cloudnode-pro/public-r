@@ -7,7 +7,7 @@
  * support@cloudnode.pro
  */
 
- function CdnApi (api, ep = `cdn.${location.hostname}`, enabled = true) {
+function CdnApi (api, ep = `cdn.${location.hostname}`, enabled = true) {
   for (let ep in api) this[ep] = api[ep];
   this.endpoint = ep;
   this.enabled = true;
