@@ -989,6 +989,10 @@ pre code[class^=language] {
 .filemanager-body {
 	width: 100%;
 	max-width: calc(100% - 200px);
+	user-select: none;
+	min-height: 50vh;
+	max-height: calc(100vh - 2rem);
+	overflow: auto;
 }
 
 .filemanager-files {
