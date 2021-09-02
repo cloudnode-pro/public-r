@@ -69,7 +69,7 @@ function CloudnodeFS (api) {
     }
   }
   this.Directory = function ({name, collection}) {
-    if (!(collection instanceof fs.FileCollection)) throw new Error(`@files must be Array(); ${collection?.constructor?.name} given`)
+    if (!(collection instanceof fs.FileCollection)) throw new Error(`@collection must be Array(); ${collection?.constructor?.name} given`)
     const path = name.split("/");
     this.path = name;
     this.basename = path.slice(path.length - 1)[0];
