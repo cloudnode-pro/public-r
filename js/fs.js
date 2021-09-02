@@ -124,6 +124,9 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     nav: el.querySelector(".breadcrumb")
   };
 
+  //todo: .navigate() => path string -> dir, render dir, render nav, sidebar active
+  //      .currentLocation = dir
+
   this.renderDirectory = function (dir) {
     this.elements.body.innerHTML = "";
     const files = [],
