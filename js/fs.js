@@ -185,7 +185,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     modal._element.querySelector("form").addEventListener("submit", (e) => {
       e.preventDefault();
       let name = modal._element.querySelector("input").value.replace(/\s+/g, " ").trim();
-      if (["", " "].includes(name)) name === "New Folder";
+      if (["", " "].includes(name)) name = "New Folder";
       if (this.currentLocation.files.get(name) !== undefined) {
         let i = 1;
         while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
