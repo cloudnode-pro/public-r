@@ -99,7 +99,7 @@ function CloudnodeFS (api) {
     if (!(parent instanceof fs.Directory || parent instanceof fs.FileCollection)) throw new Error(`@parent fs.Directory() or fs.FileCollection(); ${parent?.constructor?.name} given`);
     else if (!(dir instanceof fs.Directory)) throw new Error(`@dir must be fs.Directory(); ${dir?.constructor?.name} given`);
     if (parent instanceof fs.Directory) {
-      parent = parent;
+      this.parent = parent;
       parent.files.push(dir);
     }
     else
