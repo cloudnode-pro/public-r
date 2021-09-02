@@ -108,7 +108,7 @@ function CloudnodeFS (api) {
       parent.push(dir);
     return dir;
   }
-  this.tree = new fs.Directory({name:"@root", collection: new fs.FileCollection()});
+  this.tree = new fs.Directory({name:"/", collection: new fs.FileCollection()});
 }
 
 function FileManager (el, fs = new CloudnodeFS(), options = {}) {
