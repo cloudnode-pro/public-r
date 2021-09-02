@@ -159,19 +159,30 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
   }
 
   this.mkdir = function () {
-    const modal = main.page.modal({header:"New Folder", body:{content:`<form autocomplete="off"><div class="form-floating"><input class="form-control" placeholder=" " id="name"><label for="name">Name</label></div></form>`},footer:{buttons:[{class:"btn btn-primary", close:true,text:"Create"},{class:"btn btn-secondary", close:true,text:"Cancel"}]}});
+    const modal = main.page.modal({header:"New Folder", body:{content:`<form autocomplete="off"><div class="form-floating"><input class="form-control" placeholder=" " id="name"><label for="name">Name</label></div><p class="form-text"></p></form>`},footer:{buttons:[{class:"btn btn-primary", close:true,text:"Create"},{class:"btn btn-secondary", close:false,text:"Cancel"}]}});
     setTimeout(() => modal._element.querySelector("input").focus(), 350);
     modal._element.querySelector(".modal-footer .btn-primary").addEventListener("click", () => modal._element.querySelector("form").submit());
+    modal._element.querySelector("input").addEventListener("input", () => {
+      modal._element.querySelector(".form-text").innerHTML = "";
+      let name = modal._element.querySelector("input").value.trim();
+      if (name.startsWith(".")) modal._element.querySelector(".form-text").innerHTML = `Folders with "." at the beginning of their name are hidden.`;
+      if (name === "") name === "New Folder";
+      const existingFile = this.currentLocation.files.get(name);
+      if (existingFile !== undefined) {
+        let i = 0;
+        while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
+        name = `${name} (${i})`;
+        modal._element.querySelector(".form-text").innerHTML = `A ${existingFile instanceof fs.File ? "file" : "folder"} with that name already exists. Create ${name.replace(/>/g, "&gt;")}?`;
+      }
+    })
     modal._element.querySelector("form").addEventListener("submit", (e) => {
       e.preventDefault();
       let name = modal._element.querySelector("input").value.trim();
-      if (name === "") {
-        if (this.currentLocation.files.get("New Folder") !== undefined) {
-          let i = 0;
-          while (this.currentLocation.files.get(`New Folder (${i})`) !== undefined) ++i;
-          name = `New Folder (${i})`;
-        }
-        else name === "New Folder";
+      if (name === "") name === "New Folder";
+      if (this.currentLocation.files.get(name) !== undefined) {
+        let i = 0;
+        while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
+        name = `${name} (${i})`;
       }
       const dir = fs.mkdir(this.currentLocation, new fs.Directory({name: this.currentLocation.path + (this.currentLocation.path.endsWith("/") ? "" : "/") + name, collection: new fs.FileCollection()}))
       this.navigate(dir);
