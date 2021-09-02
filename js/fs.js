@@ -246,8 +246,14 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     }
     files.sort(compareFunction);
     dirs.sort(compareFunction);
-    for (let dir of dirs) this.renderFile(dir);
-    for (let file of files) this.renderFile(file);
+    if (files.length > 0 && dirs.length > 0) {
+      this.elements.body.innerHTML = `<div class="filemanager-files"></div>`;
+      for (let dir of dirs) this.renderFile(dir);
+      for (let file of files) this.renderFile(file);
+    }
+    else {
+      this.elements.body.innerHTML = `<div class="filemanager-empty"><span class="icon-tt icon-folder"><span class="path1"></span><span class="path2"></span></span><p>Folder is Empty</p></div>`;
+    }
 
     // show path in nav
     this.elements.nav.innerHTML = "";
@@ -282,7 +288,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     if (file instanceof fs.Directory) meta.innerHTML = `${file.files.length} item${file.files.length === 1 ? "" : "s"}`;
     else meta.innerHTML = `${main.utils.readableBytes(file.size)}`;
     data.append(name, meta);
-    this.elements.body.append(d);
+    this.elements.body.querySelector(".filemanager-files").append(d);
 
     // events
     d.addEventListener("dblclick", () => location.hash = `#browse=${file.path}`);

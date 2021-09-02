@@ -987,12 +987,15 @@ pre code[class^=language] {
 }
 
 .filemanager-body {
+	max-width: calc(100% - 200px);
+}
+
+.filemanager-files {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: stretch;
-	max-width: calc(100% - 200px);
 }
 
 .filemanager-file {
