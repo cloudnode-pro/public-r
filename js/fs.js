@@ -185,8 +185,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       let html = "";
       for (let i in path) {
         const fullPath = path.slice(0, i).join("/");
-        console.log(fullPath, i, path.length);
-        if (i === path.length - 1) html += `<li class="breadcrumb-item active" aria-current="page">${path[i]}</li>`;
+        if (+i === path.length - 1) html += `<li class="breadcrumb-item active" aria-current="page">${path[i]}</li>`;
         else html += `<li class="breadcrumb-item"><a href="#browse=${fullPath}">${path[i]}</a></li>`;
       }
       this.elements.nav.innerHTML = html;
