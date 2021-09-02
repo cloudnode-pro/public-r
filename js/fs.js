@@ -129,6 +129,10 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     const p = path.split("/").slice(1);
     for (let i in p) {
       const d = p[i];
+      if (d === "..") {
+        if (this.currentLocation.parent instanceof fs.Directory) this.currentLocation = this.currentLocation.parent;
+        continue;
+      }
       const file = this.currentLocation.files.get(d);
       console.log(d, file, +i, p.length);
       if (file instanceof fs.Directory) this.currentLocation = file;
