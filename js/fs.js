@@ -125,11 +125,13 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
   };
 
   this.navigate = function (path) {
+    if (path.startsWith("/")) this.currentLocation = fs.tree;
     const p = path.split("/").slice(1);
     for (let i in p) {
       const d = p[i];
       const file = this.currentLocation.files.get(d);
-      if (file instanceof fs.Directory) this.currentLocation = d;
+      console.log(d, file, +i, p.length);
+      if (file instanceof fs.Directory) this.currentLocation = file;
       else if (+i === p.length - 1 && file !== undefined) {
         if (file instanceof fs.File) fm.openEditor(file);
         else if (file instanceof fs.Directory) this.renderDirectory(file);
@@ -141,7 +143,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       }
     }
   }
-  this.currentLocation = fs.tree;
+  this.currentLocation = null;
 
   // todo open file edit screen
   this.openEditor = function (file) {
