@@ -125,6 +125,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
   };
 
   this.navigate = function (path) {
+    if (path instanceof fs.Directory) path = path.path;
     let p = path.split("/")
     if (path.startsWith("/")) {
       this.currentLocation = fs.tree;
