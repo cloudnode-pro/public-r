@@ -91,8 +91,8 @@ function CloudnodeFS (api) {
         const segment = path[i];
         let nDir = parent.files.get(segment);
         if (!(nDir instanceof fs.Directory) && +i < path.length - 1) {
-          const dir = fs.mkdir(parent, new fs.Directory({name: "/" + path.slice(1, +i + 1).join("/"), collection: new fs.FileCollection()}));
-          console.log(dir, path.slice(1, +i + 1), +i)
+          const dir = fs.mkdir(parent, new fs.Directory({name: "/" + path.slice(0, +i + 1).join("/"), collection: new fs.FileCollection()}));
+          console.log(dir, path.slice(0, +i + 1), +i)
           parent = dir;
         }
         else parent.files.push(file, parent);
