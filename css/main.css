@@ -997,10 +997,24 @@ pre code[class^=language] {
 
 .filemanager-file {
 	margin: .5rem .8rem;
+	user-select: none;
+}
+
+.filemanager-file-icon {
+  pointer-events: none;
 }
 
 .filemanager-file-data .meta {
 	opacity: .5;
+}
+
+.filemanager-file.selected .filemanager-file-data {
+  background: #8ab4f826;
+  border-radius: .25rem;
+}
+
+.filemanager-file:hover .filemanager-file-icon {
+  filter: brightness(1.1);
 }
 
 .btn-transparent {
