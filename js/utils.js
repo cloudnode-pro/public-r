@@ -123,7 +123,7 @@ main.page.modal = function ({header, body, footer, options}) {
 	$modal.innerHTML = html;
 	$modal = $modal.children[0];
 	document.body.append($modal);
-	$modal = $modal.getElementById(id);
+	$modal = document.getElementById(id);
 	let modal = new bootstrap.Modal($modal[0], {
 		keyboard: options.close !== false,
 		focus: options.focus ?? true,
