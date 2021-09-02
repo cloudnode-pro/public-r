@@ -94,7 +94,6 @@ main.page.modal = function ({header, body, footer, options}) {
 	//hide any other open modals
 	const modals = document.querySelectorAll(".modal.show, .modal-backdrop.show");
 	for (let modal of modals) {
-		console.log(modal);
 		modal.classList.remove("show");
 		setTimeout(function () {
 			modal.remove();
@@ -125,7 +124,7 @@ main.page.modal = function ({header, body, footer, options}) {
 	$modal = $modal.children[0];
 	document.body.append($modal);
 	$modal = document.getElementById(id);
-	let modal = new bootstrap.Modal($modal[0], {
+	let modal = new bootstrap.Modal($modal, {
 		keyboard: options.close !== false,
 		focus: options.focus ?? true,
 		backdrop: options.close === false ? "static" : true
