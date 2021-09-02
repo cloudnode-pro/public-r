@@ -56,6 +56,17 @@ function CloudnodeFS (api) {
     this.get = function (basename) {
       return this[this.map[basename]];
     }
+    this.unlink = function (file) {
+      if (!(file instanceof fs.File || file.instanceof fs.Directory)) throw new Error(`@file must be fs.File(), fs.Directory() or String(); ${file?.constructor?.name} given`);
+      if (!(file instanceof String)) file = file.basename;
+      if (this.get(file) === undefined) return false;
+      else {
+        delete this[this.get(file)];
+        delete this.map[file];
+        --this.length;
+        return true;
+      }
+    }
   }
   this.Directory = function ({name, collection}) {
     if (!(collection instanceof fs.FileCollection)) throw new Error(`@files must be Array(); ${collection?.constructor?.name} given`)
