@@ -93,6 +93,7 @@ main.utils = {
 main.page.modal = function ({header, body, footer, options}) {
 	//hide any other open modals
 	const modals = document.querySelectorAll(".modal.show, .modal-backdrop.show");
+	console.log(modal);
 	for (let modal of modals) {
 		modal.classList.remove("show");
 		setTimeout(function () {
