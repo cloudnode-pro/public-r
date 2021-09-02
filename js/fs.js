@@ -161,7 +161,6 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
   this.mkdir = function () {
     const modal = main.page.modal({header:"New Folder", body:{content:`<form autocomplete="off"><div class="form-floating"><input class="form-control" placeholder=" " id="name"><label for="name">Name</label></div><p class="form-text"></p></form>`},footer:{buttons:[{class:"btn btn-primary", close:true,text:"Create"},{class:"btn btn-secondary", close:false,text:"Cancel"}]}});
     setTimeout(() => modal._element.querySelector("input").focus(), 350);
-    modal._element.querySelector(".modal-footer .btn-primary").addEventListener("click", () => modal._element.querySelector("form").submit());
     modal._element.querySelector("input").addEventListener("input", () => {
       modal._element.querySelector(".form-text").innerHTML = "";
       let name = modal._element.querySelector("input").value.trim();
