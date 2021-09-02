@@ -124,8 +124,29 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     nav: el.querySelector(".breadcrumb")
   };
 
-  //todo: .navigate() => path string -> dir, render dir, render nav, sidebar active
-  //      .currentLocation = dir
+  this.navigate = function (path) {
+    const p = path.split("/").slice(1);
+    for (let i in p) {
+      const d = p[i];
+      const file = this.currentLocation.files.get(d);
+      if (d instanceof fs.Directory) this.currentLocation = d;
+      else if (+i === p.length - 1 && d !== undefined) {
+        if (d instanceof fs.File) fm.openEditor(d);
+        else if (d instanceof fs.Directory) this.renderDirectory(d);
+        return d;
+      }
+      else {
+        main.page.toast({theme:{background:"danger"},body:{content:`Directory "asd" does not exist.`}})
+        return;
+      }
+    }
+  }
+  this.currentLocation = fs.tree;
+
+  // todo open file edit screen
+  this.openEditor = function (file) {
+
+  }
 
   this.renderDirectory = function (dir) {
     this.elements.body.innerHTML = "";
