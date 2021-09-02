@@ -114,7 +114,7 @@ main.page.modal = function ({header, body, footer, options}) {
     }];
     if (footer.buttons.length > 0) {
     	html += `<div class="modal-footer">`;
-    	for (let button of footer.buttons) html += `<button type="button" class="${typeof button.class === "string" ? button.class : "btn btn-secondary"}"${typeof button.close === "boolean" && button.close === false ? "" : ' data-bs-dismiss="modal"'}>${button.text}</button>`
+    	for (let button of footer.buttons) html += `<button type="button" class="${typeof button.class === "string" ? button.class : "btn btn-secondary"}"${typeof button.close === "boolean" && button.close === false ? "" : ' data-bs-dismiss="modal"'}${typeof button.attributes === "object" ? (() => {let t="";for(let k in button.attributes)t+=` ${k}="${button.attributes[k]}"`})() : ""}>${button.text}</button>`
     	html += `</div>`;
     }
 	html += `</div></div></div>`;
