@@ -98,7 +98,7 @@ function CloudnodeFS (api) {
   this.mkdir = function (parent, dir) {
     if (!(parent instanceof fs.Directory || parent instanceof fs.FileCollection)) throw new Error(`@parent fs.Directory() or fs.FileCollection(); ${parent?.constructor?.name} given`);
     else if (!(dir instanceof fs.Directory)) throw new Error(`@dir must be fs.Directory(); ${dir?.constructor?.name} given`);
-    if (parent instanceof fs.Directory) parent = parent.files;
+    if (parent instanceof fs.Directory) parent = parent;
     dir.parent = parent;
     parent.push(dir);
     return dir;
