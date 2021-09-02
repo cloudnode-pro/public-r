@@ -169,7 +169,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       if (name === "") name === "New Folder";
       const existingFile = this.currentLocation.files.get(name);
       if (existingFile !== undefined) {
-        let i = 0;
+        let i = 1;
         while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
         name = `${name} (${i})`;
         modal._element.querySelector(".form-text").innerHTML = `A ${existingFile instanceof fs.File ? "file" : "folder"} with that name already exists. Create ${name.replace(/>/g, "&gt;")}?`;
@@ -180,7 +180,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       let name = modal._element.querySelector("input").value.trim();
       if (name === "") name === "New Folder";
       if (this.currentLocation.files.get(name) !== undefined) {
-        let i = 0;
+        let i = 1;
         while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
         name = `${name} (${i})`;
       }
