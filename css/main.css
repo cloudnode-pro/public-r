@@ -991,7 +991,7 @@ pre code[class^=language] {
 	max-width: calc(100% - 200px);
 	user-select: none;
 	min-height: 50vh;
-	max-height: calc(100vh - 2rem);
+	max-height: calc(100vh - 6rem);
 	overflow: auto;
 }
 
