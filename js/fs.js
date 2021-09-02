@@ -172,7 +172,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         }
         else name === "New Folder";
       }
-      const dir = fs.mkdir(this.currentLocation, new Directory({name: this.currentLocation.path + this.currentLocation.path.endsWith("/") ? "" : "/" + name, collection: new fs.FileCollection()}))
+      const dir = fs.mkdir(this.currentLocation, new fs.Directory({name: this.currentLocation.path + this.currentLocation.path.endsWith("/") ? "" : "/" + name, collection: new fs.FileCollection()}))
       this.navigate(dir);
     })
   }
