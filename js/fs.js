@@ -124,6 +124,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
   };
 
   this.renderDirectory = function (dir) {
+    this.elements.body.innerHTML = "";
     const files = [],
           dirs = [];
     dir.files.forEach(file => {
