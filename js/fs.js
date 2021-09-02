@@ -169,6 +169,10 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         modal._element.querySelector(".form-text").innerHTML = `Folder names cannot contain "../".`;
         modal._element.querySelector("input").value = name.replace(/\.\.\//g, "");
       }
+      else if (name.includes("/")) {
+        modal._element.querySelector(".form-text").innerHTML = `Folder names cannot contain "/".`;
+        modal._element.querySelector("input").value = name.replace(/\//g, "");
+      }
       if (name.startsWith(".")) modal._element.querySelector(".form-text").innerHTML = `Folders with "." at the beginning of their name are hidden.`;
       if (name === "") name === "New Folder";
       const existingFile = this.currentLocation.files.get(name);
