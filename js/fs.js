@@ -137,7 +137,6 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         continue;
       }
       const file = this.currentLocation.files.get(d);
-      console.log(d, file, +i, p.length);
       if (file instanceof fs.Directory) this.currentLocation = file;
       else if (file === undefined) {
         main.page.toast({theme:{background:"danger"},body:{content:`Directory "${d}" does not exist.`}})
