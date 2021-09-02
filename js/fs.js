@@ -57,13 +57,14 @@ function CloudnodeFS (api) {
       return this[this.map[basename]];
     }
     this.unlink = function (file) {
-      if (!(file instanceof fs.File || file instanceof fs.Directory)) throw new Error(`@file must be fs.File(), fs.Directory() or String(); ${file?.constructor?.name} given`);
+      if (!(file instanceof fs.File || file instanceof fs.Directory || file instanceof String)) throw new Error(`@file must be fs.File(), fs.Directory() or String(); ${file?.constructor?.name} given`);
       if (!(file instanceof String)) file = file.basename;
       if (this.get(file) === undefined) return false;
       else {
-        const success = delete this[this.get(file).toString()] && delete this.map[file];
-        if (success) --this.length;
-        return success;
+        this[this.get(file)] = undefined;
+        delete this.map[file];
+        --this.length;
+        return true;
       }
     }
   }
