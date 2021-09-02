@@ -157,6 +157,26 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     console.log("Edit", file);
   }
 
+  this.mkdir = function () {
+    const modal = main.page.modal({header:"New Folder", body:{content:`<form autocomplete="off"><div class="form-floating"><input class="form-control" placeholder=" " id="name"><label for="name">Name</label></div></form>`},footer:{buttons:[{class:"btn btn-primary", close:true,text:"Create"},{class:"btn btn-secondary", close:true,text:"Cancel"}]}});
+    setTimeout(() => modal._element.querySelector("input").focus(), 350);
+    modal._element.querySelector(".modal-footer .btn-primary").addEventListener("click", () => modal._element.querySelector("form").submit());
+    modal._element.querySelector("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      let name = modal._element.querySelector("input").trim();
+      if (name === "") {
+        if (this.currentLocation.files.get("New Folder") !== undefined) {
+          let i = 0;
+          while (this.currentLocation.files.get(`New Folder (${i})`) !== undefined) ++i;
+          name = `New Folder (${i})`;
+        }
+        else name === "New Folder";
+      }
+      const dir = fs.mkdir(this.currentLocation, new Directory({name: this.currentLocation.path + this.currentLocation.path.endsWith("/") ? "" : "/" + name, collection: new fs.FileCollection()}))
+      this.navigate(dir);
+    })
+  }
+
   this.renderDirectory = function (dir) {
     this.elements.body.innerHTML = "";
     const files = [],
