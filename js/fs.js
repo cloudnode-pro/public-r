@@ -291,9 +291,9 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     // events
     const fm = this;
     d.addEventListener("dblclick", () => location.hash = `#browse=${file.path}`);
-    d.addEventListener("click", () => {
+    d.addEventListener("click", (e) => {
       fm.elements.body.querySelector(".filemanager-files .filemanager-file.selected")?.forEach((e) => e.classList.remove("selected"));
-      this.classList.add("selected");
+      e.target.classList.add("selected");
     });
 
     return d;
