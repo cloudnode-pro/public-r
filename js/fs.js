@@ -244,6 +244,10 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     else meta.innerHTML = `${main.utils.readableBytes(file.size)}`;
     data.append(name, meta);
     this.elements.body.append(d);
+
+    // events
+    d.addEventListener("dblclick", () => location.hash = `#browse=${file.path}`);
+
     return d;
   }
   this.getIcon = function (file) {
