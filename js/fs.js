@@ -165,6 +165,10 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     modal._element.querySelector("input").addEventListener("input", () => {
       modal._element.querySelector(".form-text").innerHTML = "";
       let name = modal._element.querySelector("input").value.trim();
+      if (name.includes("../")) {
+        modal._element.querySelector(".form-text").innerHTML = `Folder names cannot contain "../".`;
+        modal._element.querySelector("input").value = name.replace(/\.\.\//g, "");
+      }
       if (name.startsWith(".")) modal._element.querySelector(".form-text").innerHTML = `Folders with "." at the beginning of their name are hidden.`;
       if (name === "") name === "New Folder";
       const existingFile = this.currentLocation.files.get(name);
@@ -172,7 +176,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         let i = 1;
         while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
         name = `${name} (${i})`;
-        modal._element.querySelector(".form-text").innerHTML = `A ${existingFile instanceof fs.File ? "file" : "folder"} with that name already exists. Create ${name.replace(/>/g, "&gt;")}?`;
+        modal._element.querySelector(".form-text").innerHTML = `A ${existingFile instanceof fs.File ? "file" : "folder"} with that name already exists. Create <b>${name.replace(/>/g, "&gt;")}</b>?`;
       }
     })
     modal._element.querySelector("form").addEventListener("submit", (e) => {
