@@ -87,10 +87,10 @@ function CloudnodeFS (api) {
       path = path.split("/");
       let parent = fs.tree;
       for (let i in path) {
-        if (+i === 0) continue;
+        if (path[i] === "") continue;
         const segment = path[i];
         let nDir = parent.files.get(segment);
-        if (!(nDir instanceof fs.Directory) && i < path.length - 1) {
+        if (!(nDir instanceof fs.Directory) && +i < path.length - 1) {
           const dir = fs.mkdir(parent, new fs.Directory({name: "/" + path.slice(1, +i + 1).join("/"), collection: new fs.FileCollection()}));
           parent = dir;
         }
