@@ -987,6 +987,7 @@ pre code[class^=language] {
 }
 
 .filemanager-body {
+	width: 100%;
 	max-width: calc(100% - 200px);
 }
 
