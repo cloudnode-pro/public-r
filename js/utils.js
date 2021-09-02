@@ -92,11 +92,13 @@ main.utils = {
 
 main.page.modal = function ({header, body, footer, options}) {
 	//hide any other open modals
-	const modals = $(".modal.show, .modal-backdrop.show");
-	modals.removeClass("show");
-	setTimeout(function () {
-		modals.remove();
-	}, 150)
+	const modals = document.querySelectorAll(".modal.show, .modal-backdrop.show");
+	for (let modal of modals) {
+		modal.classList.remove("show");
+		setTimeout(function () {
+			modal.remove();
+		}, 150)
+	}
 	if (typeof options !== "object") options = {};
 	if (typeof options.close !== "boolean") options.close = true;
 	let id = `modal${Date.now()}`;
@@ -117,7 +119,11 @@ main.page.modal = function ({header, body, footer, options}) {
     	html += `</div>`;
     }
 	html += `</div></div></div>`;
-	let $modal = $("body").append(html).find(`#${id}`);
+	let $modal = document.createElement("div");
+	$modal.innerHTML = html;
+	$modal = $modal.children[0];
+	document.body.append($modal);
+	$modal = $modal.getElementById(id);
 	let modal = new bootstrap.Modal($modal[0], {
 		keyboard: options.close !== false,
 		focus: options.focus ?? true,
@@ -125,11 +131,11 @@ main.page.modal = function ({header, body, footer, options}) {
 	});
 	modal.show();
 
-	$modal.on("hidden.bs.modal", function () {
+	$modal.addEventListener("hidden.bs.modal", function () {
 		$modal.remove();
 	})
 
-    return [$modal, modal];
+    return modal;
 }
 
 // prototypes
