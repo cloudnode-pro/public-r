@@ -132,15 +132,16 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       const file = this.currentLocation.files.get(d);
       console.log(d, file, +i, p.length);
       if (file instanceof fs.Directory) this.currentLocation = file;
-      else if (+i === p.length - 1 && file !== undefined) {
+      else if (=== undefined) {
+        main.page.toast({theme:{background:"danger"},body:{content:`Directory "asd" does not exist.`}})
+        return;
+      }
+      else if (+i === p.length - 1) {
         if (file instanceof fs.File) fm.openEditor(file);
         else if (file instanceof fs.Directory) this.renderDirectory(file);
         return file;
       }
-      else {
-        main.page.toast({theme:{background:"danger"},body:{content:`Directory "asd" does not exist.`}})
-        return;
-      }
+      else throw new Error("Unexpected situation");
     }
   }
   this.currentLocation = null;
