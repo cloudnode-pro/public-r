@@ -145,7 +145,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
 
   // todo open file edit screen
   this.openEditor = function (file) {
-
+    console.log("Edit", file);
   }
 
   this.renderDirectory = function (dir) {
