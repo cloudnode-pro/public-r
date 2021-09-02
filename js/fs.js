@@ -107,12 +107,68 @@ function CloudnodeFS (api) {
 }
 
 function FileManager (el, fs = new CloudnodeFS(), options) {
+
+  this.options = options;
+  this.options.sortFiles = this.options.sortFiles === undefined ? "name+" : this.options.sortFiles;
+
   this.elements = {
     root: el,
     sidebar: el.querySelector(".filemanager-sidebar"),
     body: el.querySelector(".filemanager-body"),
     nav: el.querySelector(".breadcrumb")
   };
+
+  this.renderDirectory = function (dir) {
+    const files = [],
+          dirs = [];
+    dir.files.forEach(file => {
+      if (file instanceof fs.File) files.push(file);
+      else dirs.push(file);
+    });
+    let compareFunction = () => 0;
+    switch (this.options.sortFiles) {
+      case "name+":
+        compareFunction = (a, b) => {
+          const nameA = a.basename.toLowerCase();
+          const nameB = b.basename.toLowerCase();
+          if (nameA < nameB)
+            return -1;
+          if (nameA > nameB)
+            return 1;
+          return 0;
+        };
+        break;
+      case "name-":
+        compareFunction = (a, b) => {
+          const nameA = a.basename.toLowerCase();
+          const nameB = b.basename.toLowerCase();
+          if (nameA < nameB)
+            return 1;
+          if (nameA > nameB)
+            return -1;
+          return 0;
+        };
+        break;
+      case "size+":
+        compareFunction = (a, b) => {
+          const sizeA = a instanceof fs.Directory ? a.files.length : a.size;
+          const sizeB = b instanceof fs.Directory ? b.files.length : b.size;
+          return a - b;
+        };
+        break;
+      case "size-":
+        compareFunction = (a, b) => {
+          const sizeA = a instanceof fs.Directory ? a.files.length : a.size;
+          const sizeB = b instanceof fs.Directory ? b.files.length : b.size;
+          return b - a;
+        };
+        break;
+    }
+    files.sort(compareFunction);
+    dirs.sort(compareFunction);
+    for (let dir of dirs) this.renderFile(dir);
+    for (let file of files) this.renderFile(file);
+  }
 
   this.renderFile = function (file) {
     const d = document.createElement("div");
@@ -132,27 +188,28 @@ function FileManager (el, fs = new CloudnodeFS(), options) {
     if (file instanceof fs.Directory) meta.innerHTML = `${file.files.length} item${file.files.length === 1 ? "" : "s"}`;
     else meta.innerHTML = `${main.utils.readableBytes(file.size)}`;
     data.append(name, meta);
+    this.elements.body.append(d);
     return d;
   }
   this.getIcon = function (file) {
     const icon = document.createElement("img");
     if (file instanceof fs.Directory) {
-      if (file.basename === ".backups") icon.src = `${options.icons}/places/default-folder-recent.svg`;
-      else if (file.basename.toLowerCase() === "documents") icon.src = `${options.icons}/places/default-folder-documents.svg`;
-      else if (file.basename.toLowerCase() === "downloads") icon.src = `${options.icons}/places/default-folder-download.svg`;
-      else if (file.basename.toLowerCase() === "music") icon.src = `${options.icons}/places/default-folder-music.svg`;
-      else if (["pictures", "photos"].includes(file.basename.toLowerCase())) icon.src = `${options.icons}/places/default-folder-picture.svg`;
-      else if (["videos", "movies", "films"].includes(file.basename.toLowerCase())) icon.src = `${options.icons}/places/default-folder-videos.svg`;
-      else if (["public_html", "html", "htdocs", "www"].includes(file.basename.toLowerCase())) icon.src = `${options.icons}/places/folder-html.svg`;
-      else if (["$recycle.bin", "rubbish bin"].includes(file.basename.toLowerCase())) icon.src = file.length === 0 ? `${options.icons}/places/folder-trash.svg` : `${options.icons}/places/folder-trash-full.svg`;
-      else if (file.basename.endsWith(".srv")) icon.src = `${options.icons}/places/network-server.svg`;
-      else if (file.mode === 1) icon.src = `${options.icons}/places/default-folder-publicshare.svg`;
-      else icon.src = `${options.icons}/places/default-folder.svg`;
+      if (file.basename === ".backups") icon.src = `${this.options.icons}/places/default-folder-recent.svg`;
+      else if (file.basename.toLowerCase() === "documents") icon.src = `${this.options.icons}/places/default-folder-documents.svg`;
+      else if (file.basename.toLowerCase() === "downloads") icon.src = `${this.options.icons}/places/default-folder-download.svg`;
+      else if (file.basename.toLowerCase() === "music") icon.src = `${this.options.icons}/places/default-folder-music.svg`;
+      else if (["pictures", "photos"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/default-folder-picture.svg`;
+      else if (["videos", "movies", "films"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/default-folder-videos.svg`;
+      else if (["public_html", "html", "htdocs", "www"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/folder-html.svg`;
+      else if (["$recycle.bin", "rubbish bin"].includes(file.basename.toLowerCase())) icon.src = file.length === 0 ? `${this.options.icons}/places/folder-trash.svg` : `${this.options.icons}/places/folder-trash-full.svg`;
+      else if (file.basename.endsWith(".srv")) icon.src = `${this.options.icons}/places/network-server.svg`;
+      else if (file.mode === 1) icon.src = `${this.options.icons}/places/default-folder-publicshare.svg`;
+      else icon.src = `${this.options.icons}/places/default-folder.svg`;
     }
     else {
-      icon.src = `${options.icons}/mimetypes/${file.mimetype.toLowerCase().replace("/", "-")}.svg`;
+      icon.src = `${this.options.icons}/mimetypes/${file.mimetype.toLowerCase().replace("/", "-")}.svg`;
     }
-    icon.addEventListener("error", () => icon.src = `${options.icons}/mimetypes/text-x-generic.svg`);
+    icon.addEventListener("error", () => icon.src = `${this.options.icons}/mimetypes/text-x-generic.svg`);
     icon.alt = file.basename;
     return icon;
   }
