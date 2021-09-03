@@ -203,7 +203,48 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
         name = `${name} (${i})`;
       }
-      const dir = fs.mkdir(this.currentLocation, new fs.Directory({name: this.currentLocation.path + (this.currentLocation.path.endsWith("/") ? "" : "/") + name, collection: new fs.FileCollection()}))
+      const dir = fs.mkdir(this.currentLocation, new fs.Directory({name: this.currentLocation.path + (this.currentLocation.path.endsWith("/") ? "" : "/") + name, collection: new fs.FileCollection(), mode:0}))
+      location.hash = `#browse=${dir.path}`;
+      modal.hide();
+    })
+  }
+
+  this.createFile = function () {
+    const modal = main.page.modal({header:"New File", body:{content:`<form autocomplete="off" id="newFolder"><div class="form-floating"><input class="form-control" placeholder=" " id="name"><label for="name">Name</label></div><p class="form-text"></p></form>`},footer:{buttons:[{class:"btn btn-primary",attributes:{form:"newFolder",type:"submit"},close:false,text:"Create"},{class:"btn btn-secondary",close:true,text:"Cancel"}]}});
+    setTimeout(() => modal._element.querySelector("input").focus(), 350);
+    modal._element.querySelector("input").addEventListener("input", () => {
+      modal._element.querySelector(".form-text").innerHTML = "";
+      let name = modal._element.querySelector("input").value.replace(/\s+/g, " ").trim();
+      if (name.includes("../")) {
+        modal._element.querySelector(".form-text").innerHTML = `File names cannot contain "../".`;
+        modal._element.querySelector("input").value = name.replace(/\.\.\//g, "");
+      }
+      else if (name.includes("/")) {
+        modal._element.querySelector(".form-text").innerHTML = `File names cannot contain "/".`;
+        modal._element.querySelector("input").value = name.replace(/\//g, "");
+      }
+      if (name.startsWith(".")) modal._element.querySelector(".form-text").innerHTML = `Files with "." at the beginning of their name are hidden.`;
+      if (name === "") name === "New File";
+      const existingFile = this.currentLocation.files.get(name);
+      if (existingFile !== undefined) {
+        let i = 1;
+        while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
+        name = `${name} (${i})`;
+        modal._element.querySelector(".form-text").innerHTML = `A ${existingFile instanceof fs.File ? "file" : "folder"} with that name already exists. Create <b>${name.replace(/>/g, "&gt;")}</b>?`;
+      }
+    })
+    modal._element.querySelector("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      let name = modal._element.querySelector("input").value.replace(/\s+/g, " ").trim();
+      if (["", " "].includes(name)) name = "New File";
+      if (this.currentLocation.files.get(name) !== undefined) {
+        let i = 1;
+        while (this.currentLocation.files.get(`${name} (${i})`) !== undefined) ++i;
+        name = `${name} (${i})`;
+      }
+      //{name, mode, created, size, mimetype}
+      const file = new fs.File({name: this.currentLocation.path + (this.currentLocation.path.endsWith("/") ? "" : "/") + name, mode: 0, created: Date.now(), size: 0, mimetype: "application/x-empty"});
+      fs.link(file);
       location.hash = `#browse=${dir.path}`;
       modal.hide();
     })
