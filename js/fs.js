@@ -280,6 +280,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
 
   this.renderFile = function (file) {
     const d = document.createElement("div");
+    d.draggable = true;
     d.classList.add("filemanager-file");
     const icon = document.createElement("div");
     icon.classList.add("filemanager-file-icon");
@@ -300,7 +301,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
 
     // events
     d.addEventListener("dblclick", () => location.hash = `#browse=${file.path}`);
-    d.addEventListener("click", (e) => {
+    d.addEventListener("mousedown", (e) => {
       if (!e.ctrlKey) {
         this.elements.body.querySelectorAll(".filemanager-files .filemanager-file.selected").forEach((e) => e.classList.remove("selected"));
         this.selected = new fs.FileCollection();
@@ -309,6 +310,10 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       if (this.selected.get(file.basename) === undefined) this.selected.push(file);
       else this.selected.unlink(file);
     });
+    d.addEventListener("dragstart", (e) => {
+      e.dataTransfer.dropEffect = "move";
+      e.dataTransfer.setData("text/plain", JSON.stringify(this.selected.map));
+    })
 
     return d;
   }
