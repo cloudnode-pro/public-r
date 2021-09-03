@@ -333,7 +333,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       else if (file.basename.toLowerCase() === "documents") icon.src = `${this.options.icons}/places/default-folder-documents.svg`;
       else if (file.basename.toLowerCase() === "downloads") icon.src = `${this.options.icons}/places/default-folder-download.svg`;
       else if (file.basename.toLowerCase() === "music") icon.src = `${this.options.icons}/places/default-folder-music.svg`;
-      else if (["pictures", "photos"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/default-folder-picture.svg`;
+      else if (["pictures", "photos"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/default-folder-pictures.svg`;
       else if (["videos", "movies", "films"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/default-folder-videos.svg`;
       else if (["public_html", "html", "htdocs", "www"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/folder-html.svg`;
       else if (["$recycle.bin", "rubbish bin"].includes(file.basename.toLowerCase())) icon.src = file.length === 0 ? `${this.options.icons}/places/user-trash.svg` : `${this.options.icons}/places/user-trash-full.svg`;
