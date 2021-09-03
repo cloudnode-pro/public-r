@@ -67,13 +67,15 @@ function CloudnodeFS (api) {
       }
     }
   }
-  this.Directory = function ({name, collection}) {
+  this.Directory = function ({name, collection, mode}) {
+    if (typeof mode !== "number") mode = 0;
     if (!(collection instanceof fs.FileCollection)) throw new Error(`@collection must be Array(); ${collection?.constructor?.name} given`)
     const path = name.split("/");
     this.path = name;
     this.basename = path.slice(path.length - 1)[0];
     this.files = collection;
     this.parent = null;
+    this.mode = mode;
     this.toObject = function (options) {
       if (typeof options !== "object") options = {};
       const slashes = options.slashes === true;
@@ -101,7 +103,7 @@ function CloudnodeFS (api) {
         const segment = path[i];
         let nDir = parent.files.get(segment);
         if (!(nDir instanceof fs.Directory) && +i < path.length - 1) {
-          const dir = fs.mkdir(parent, new fs.Directory({name: "/" + path.slice(0, +i + 1).join("/"), collection: new fs.FileCollection()}));
+          const dir = fs.mkdir(parent, new fs.Directory({name: "/" + path.slice(0, +i + 1).join("/"), collection: new fs.FileCollection(), mode: file.mode}));
           parent = dir;
         }
         else parent.files.push(file, parent);
@@ -119,7 +121,7 @@ function CloudnodeFS (api) {
       parent.push(dir);
     return dir;
   }
-  this.tree = new fs.Directory({name:"/", collection: new fs.FileCollection()});
+  this.tree = new fs.Directory({name:"/", collection: new fs.FileCollection(), mode:0});
 }
 
 function FileManager (el, fs = new CloudnodeFS(), options = {}) {
@@ -297,6 +299,12 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     if (file instanceof fs.Directory) meta.innerHTML = `${file.files.length} item${file.files.length === 1 ? "" : "s"}`;
     else meta.innerHTML = `${main.utils.readableBytes(file.size)}`;
     data.append(name, meta);
+    if (file instanceof fs.File && file.mode === 1) {
+      const shared = document.createElement("div");
+      shared.classList.add("filemamager-file-shared");
+      shared.innerHTML = `<span class="icon-tt icon-share"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>`;
+      d.append(shared);
+    }
     this.elements.body.querySelector(".filemanager-files").append(d);
 
     // events

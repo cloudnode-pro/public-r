@@ -1014,6 +1014,7 @@ pre code[class^=language] {
 .filemanager-file {
 	margin: 1rem 1.6rem;
 	user-select: none;
+	position: relative;
 }
 
 .filemanager-file * {
@@ -1022,6 +1023,16 @@ pre code[class^=language] {
 
 .filemanager-file-data .meta {
 	opacity: .5;
+}
+
+.filemamager-file-shared {
+  position: absolute;
+  right: 3px;
+  top: 44px;
+  font-size: .9rem;
+  background-color: #444547b3;
+  padding: .05rem;
+  border-radius: .25rem;
 }
 
 .filemanager-file.selected .filemanager-file-data {
