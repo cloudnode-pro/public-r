@@ -311,7 +311,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       else this.selected.unlink(file);
     });
     d.addEventListener("dragstart", (e) => {
-      ev.dataTransfer.setDragImage(this.getIcon(file), 10, 10);
+      e.dataTransfer.setDragImage(this.getIcon(file), 10, 10);
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setData("text/plain", JSON.stringify(this.selected.map));
     })
