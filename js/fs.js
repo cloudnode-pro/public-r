@@ -245,7 +245,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       //{name, mode, created, size, mimetype}
       const file = new fs.File({name: this.currentLocation.path + (this.currentLocation.path.endsWith("/") ? "" : "/") + name, mode: 0, created: Date.now(), size: 0, mimetype: "application/x-empty"});
       fs.link(file);
-      location.hash = `#browse=${dir.path}`;
+      location.hash = `#browse=${file.path}`;
       modal.hide();
     })
   }
