@@ -336,7 +336,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
       else if (["pictures", "photos"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/default-folder-picture.svg`;
       else if (["videos", "movies", "films"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/default-folder-videos.svg`;
       else if (["public_html", "html", "htdocs", "www"].includes(file.basename.toLowerCase())) icon.src = `${this.options.icons}/places/folder-html.svg`;
-      else if (["$recycle.bin", "rubbish bin"].includes(file.basename.toLowerCase())) icon.src = file.length === 0 ? `${this.options.icons}/places/folder-trash.svg` : `${this.options.icons}/places/folder-trash-full.svg`;
+      else if (["$recycle.bin", "rubbish bin"].includes(file.basename.toLowerCase())) icon.src = file.length === 0 ? `${this.options.icons}/places/user-trash.svg` : `${this.options.icons}/places/user-trash-full.svg`;
       else if (file.basename.endsWith(".srv")) icon.src = `${this.options.icons}/places/network-server.svg`;
       else if (file.mode === 1) icon.src = `${this.options.icons}/places/default-network.svg`;
       else icon.src = `${this.options.icons}/places/default-folder.svg`;
