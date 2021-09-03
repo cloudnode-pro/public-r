@@ -1015,6 +1015,7 @@ pre code[class^=language] {
 	margin: 1rem 1.6rem;
 	user-select: none;
 	position: relative;
+	text-align: center;
 }
 
 .filemanager-file * {
