@@ -61,9 +61,13 @@ function CloudnodeFS (api) {
       if (!(file instanceof String)) file = file.basename;
       if (this.get(file) === undefined) return false;
       else {
-        const success = delete this[this.map[file]] && delete this.map[file];
+        const deletedIndex = this.map[file];
+        const success = delete this[deletedIndex] && delete this.map[file];
         if (success) --this.length;
-        return success;
+        for (let i = deletedIndex; i <= this.length; ++i) {
+          this[i] = this[+i - 1];
+          if (+i === this.length) delete this[i];
+        }
       }
     }
   }
