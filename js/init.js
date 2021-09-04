@@ -21,7 +21,7 @@ main.init = function (app, el, options = {}) {
 				input.autocomplete = "one-time-code";
 				input.name = `n${Date.now()}${i}`;
 				el.append(input);
-				input.on("input", function () {
+				input.addEventListener("input", function () {
 					input.value = input.value.replace(/[^\d]/g, "");
 					if (input.value.length > 1) {
 						let val = input.value.substr(0, options.digits - i).split(""); //if not split, string prototypes are looped as well...
@@ -33,7 +33,7 @@ main.init = function (app, el, options = {}) {
 					input.value[0] ? input.value = input.value[0] : void(0);
 				});
 				if (i > 0) {
-					input.on("keyup", e => {
+					input.addEventListener("keyup", e => {
 						let code = "";
 						el.querySelectorAll(`.form-control-digit`).forEach(j => {
 							code += j.value;
