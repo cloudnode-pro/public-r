@@ -363,7 +363,7 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
         this.selected = new fs.FileCollection();
       }
       e.target.classList.toggle("selected");
-      if (this.selected.get(file.basename) === undefined) this.selected.push(file);
+      if (e.target.classList.contains("selected")) this.selected.push(file);
       else this.selected.unlink(file);
     });
     d.addEventListener("dragstart", (e) => {
