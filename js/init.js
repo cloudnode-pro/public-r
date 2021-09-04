@@ -71,8 +71,8 @@ main.init = function (app, el, options = {}) {
 			input.classList.add("form-control", "form-control-sm", "form-control-light");
 			input.placeholder = main.langData.translate("search...");
 			widget.append(input);
-			input.addEventListener("input", () => {
-				let v = this.value.trim().toLowerCase();
+			input.addEventListener("input", e => {
+				let v = e.target.value.trim().toLowerCase();
 				el.querySelector("li").forEach(li => {
 					if (!li.innerText.toLowerCase().includes(v)) li.classList.add("d-none");
 					else li.classList.remove("d-none");
