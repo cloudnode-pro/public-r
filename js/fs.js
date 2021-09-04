@@ -68,6 +68,7 @@ function CloudnodeFS (api) {
           this[+i - 1] = this[i];
           if (+i === this.length) delete this[i];
         }
+        return success;
       }
     }
   }
