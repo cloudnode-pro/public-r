@@ -7,47 +7,45 @@
  * support@cloudnode.pro
  */
  if (typeof main !== "object") throw new Error("core library missing; nothing to extend");
-main.init = function (app, $el, options = {}) {
+main.init = function (app, el, options = {}) {
 	const apps = {
-		codeInput: function ($el, options) {
+		codeInput: function (el, options) {
 			typeof options.digits !== "number" ? options.digits = 6 : void(0);
-			let $oel = $el;
-			$el.html(`<div class="input-group input-group-digit" style="width:${Math.ceil(options.digits * 42.5)}"px></div><input type="hidden" name="code">`);
-			$el = $el.find(".input-group");
-			for (let i = 0; i < options.digits; ++i) $el.append(`<input type="text" class="form-control form-control-digit" placeholder="-" autocomplete="one-time-code" name="n${Date.now()}${i}">`)
-			let $codeInput = $el.find("input"),
-			    inputs = [];
-			$codeInput.iterator(function (i) {
-			  inputs.push(i);
-			})
-			for (let input of inputs) {
-			  let $input = $(input),
-			      i = inputs.indexOf(input);
-			  $input.input(function () {
-			    input.value = input.value.replace(/[^\d]/g, "");
-			    if (input.value.length > 1) {
-			      let val = input.value.substr(0, inputs.length - i).split(""); //if not split, string prototypes are looped as well...
-			      for (let j in val) inputs[+j + i].value = val[j];
-			      if (i + val.length < inputs.length) inputs[i + val.length].focus();
-			      else inputs[i + val.length - 1].focus()
-			    }
-			    else if (input.value.length > 0 && i < inputs.length - 1) inputs[i+1].focus();
-			    input.value[0] ? input.value = input.value[0] : void(0);
-			  });
-			  if (i > 0) {
-			    $input.keyup(function (e) {
-			      let code = "";
-			      $codeInput.iterator(function (j) {
-			        code += j.value;
-			      });
-			      $("[name=code]").val(code);
-			      $("[name=code]").trigger("change");
-			      if ([8, 46, 37].includes(e.keyCode)) {
-			        inputs[i - 1].focus();
-			        inputs[i - 1].setSelectionRange(0, inputs[i - 1].value.length);
-			      }
-			    })
-			  }
+			el.innerHTML = `<div class="input-group input-group-digit" style="width:${Math.ceil(options.digits * 42.5)}"px></div><input type="hidden" name="code">`;
+			el = el.querySelector(".input-group");
+			for (let i = 0; i < options.digits; ++i) {
+				const input = document.createElement("input");
+				input.type = "text";
+				input.classList.add("form-control", "form-control-digit");
+				input.placeholder = "-";
+				input.autocomplete = "one-time-code";
+				input.name = `n${Date.now()}${i}`;
+				el.append(input);
+				input.on("input", function () {
+					input.value = input.value.replace(/[^\d]/g, "");
+					if (input.value.length > 1) {
+						let val = input.value.substr(0, options.digits - i).split(""); //if not split, string prototypes are looped as well...
+						for (let j in val) el.querySelector(`.form-control-digit:nth-child(${+j + i + 1})`).value = val[j];
+						if (i + val.length < options.digits) el.querySelector(`.form-control-digit:nth-child(${i + val.length + 1})`).focus();
+						else el.querySelector(`.form-control-digit:nth-child(${i + val.length})`).focus()
+					}
+					else if (input.value.length > 0 && i < options.digits - 1) el.querySelector(`.form-control-digit:nth-child(${i + 2})`).focus();
+					input.value[0] ? input.value = input.value[0] : void(0);
+				});
+				if (i > 0) {
+					input.on("keyup", e => {
+						let code = "";
+						el.querySelectorAll(`.form-control-digit`).forEach(j => {
+							code += j.value;
+						});
+						el.querySelector("[name=code]").value = code;
+						el.querySelector("[name=code]").dispatchEvent(new Event("change"));
+						if ([8, 46, 37].includes(e.keyCode)) {
+							el.querySelector(`.form-control-digit:nth-child(${i})`).focus();
+							el.querySelector(`.form-control-digit:nth-child(${i})`).setSelectionRange(0, el.querySelector(`.form-control-digit:nth-child(${i})`).value.length);
+						}
+					})
+				}
 			}
 		},
 		console: function ($el, options) {
