@@ -67,6 +67,7 @@ function CloudnodeFS (api) {
           --this.length;
           for (let i = deletedIndex + 1; i <= this.length; ++i) {
             this[+i - 1] = this[i];
+            --this.map[this[i].basename];
             if (+i === this.length) delete this[i];
           }
         }
