@@ -65,7 +65,7 @@ function CloudnodeFS (api) {
         const success = delete this[deletedIndex] && delete this.map[file];
         if (success) --this.length;
         for (let i = deletedIndex; i <= this.length; ++i) {
-          this[i] = this[+i - 1];
+          this[+i - 1] = this[i];
           if (+i === this.length) delete this[i];
         }
       }
