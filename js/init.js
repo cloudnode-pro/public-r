@@ -57,22 +57,31 @@ main.init = function (app, el, options = {}) {
 				let lines = options.text.split("\n");
 				let inputHistory = [];
 				for (let i in lines) lines[i] = `<div class="line">${main.MinecraftColorCodes.toHTML(lines[i])}</div>`;
-				el.html(`<div class="console"><div class="console-view">${lines.join("")}</div><div class="console-input"><div class="input-group"><label class="input-group-text" for="consoleInput">${options.label}</label><input type="text" class="form-control px-0" placeholder="Type a command..." aria-label="${options.label}" id="consoleInput"></div></div></div>`);
+				el.innerHTML = `<div class="console"><div class="console-view">${lines.join("")}</div><div class="console-input"><div class="input-group"><label class="input-group-text" for="consoleInput">${options.label}</label><input type="text" class="form-control px-0" placeholder="Type a command..." aria-label="${options.label}" id="consoleInput"></div></div></div>`;
 				if (typeof options?.callback === "function") options.callback(el, options);
 			});
 		},
 		dropdownSearch: function (el) {
-			el.addClass("dropdown-search");
-			el.html(`<div class="px-2 pb-2"><input dropdown-search class="form-control form-control-sm form-control-light" palceholder="${main.langData.translate("search...")}"></div>${el.html()}`);
-			el.find("[dropdown-search]").input(function () {
-				let v = $(this).val().trim().toLowerCase();
-				$(el[0]).find("li").iterator(function ($li) {
-					if (!$($li).text().toLowerCase().includes(v)) $($li).addClass("d-none");
-					else $($li).removeClass("d-none");
+			el.classList.add("dropdown-search");
+			const widget = document.createElement("div");
+			el.prepend(widget);
+			widget.classList.add("px-2", "pb-2");
+			const input = document.createElement("input");
+			input.setAttribute("dropdown-search", "");
+			input.classList.add("form-control", "form-control-sm", "form-control-light");
+			input.placeholder = main.langData.translate("search...");
+			widget.append(input);
+			input.addEventListener("input", () => {
+				let v = this.value.trim().toLowerCase();
+				el.querySelector("li").forEach(li => {
+					if (!li.innerText.toLowerCase().includes(v)) li.classList.add("d-none");
+					else li.classList.remove("d-none");
 				});
 			});
-			$(el[0]).parent(".dropdown").on("shown.bs.dropdown", function () {
-				$(el[0]).find("[dropdown-search]").focus().val("").trigger("input");
+			el.parentNode.addEventListener("shown.bs.dropdown", () => {
+				input.focus()
+				input.value = "";
+				input.dispatchEvent(new Event("input"));
 			});
 		}
 	}
