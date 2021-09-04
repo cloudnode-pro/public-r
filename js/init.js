@@ -38,8 +38,8 @@ main.init = function (app, el, options = {}) {
 						el.querySelectorAll(`.form-control-digit`).forEach(j => {
 							code += j.value;
 						});
-						el.querySelector("[name=code]").value = code;
-						el.querySelector("[name=code]").dispatchEvent(new Event("change"));
+						document.querySelector("[name=code]").value = code;
+						document.querySelector("[name=code]").dispatchEvent(new Event("change"));
 						if ([8, 46, 37].includes(e.keyCode)) {
 							el.querySelector(`.form-control-digit:nth-child(${i})`).focus();
 							el.querySelector(`.form-control-digit:nth-child(${i})`).setSelectionRange(0, el.querySelector(`.form-control-digit:nth-child(${i})`).value.length);
