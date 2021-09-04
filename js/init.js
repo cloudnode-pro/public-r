@@ -73,7 +73,7 @@ main.init = function (app, el, options = {}) {
 			widget.append(input);
 			input.addEventListener("input", e => {
 				let v = e.target.value.trim().toLowerCase();
-				el.querySelector("li").forEach(li => {
+				el.querySelectorAll("li").forEach(li => {
 					if (!li.innerText.toLowerCase().includes(v)) li.classList.add("d-none");
 					else li.classList.remove("d-none");
 				});
