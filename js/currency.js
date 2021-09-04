@@ -29,7 +29,7 @@ function render () {
 		let symbol = (main.currency.list[iso]?.symbol ?? "(error)");
 		$(".currency-select ul").append(`<li><a class="dropdown-item" href="#" data-currency="${iso}"><span class="me-3 align-middle">${symbol}</span><span class="align-middle">${iso}</span></a></li>`);
 	}
-	main.init("dropdownSearch", $(".currency-select ul"));
+	main.init("dropdownSearch", document.querySelector(".currency-select ul"));
 	$("[data-currency]").click(function (e) {
 		e.preventDefault();
 		let iso = $(this).attr("data-currency");
