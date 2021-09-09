@@ -5579,7 +5579,8 @@ fieldset:disabled .btn {
 	width: -moz-max-content;
 	width: max-content;
 	max-width: 100%;
-	pointer-events: none
+	pointer-events: none;
+	z-index: 1000;
 }
 
 .toast-container>:not(:last-child) {
