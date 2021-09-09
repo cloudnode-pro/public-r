@@ -189,7 +189,51 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
 
   // todo open file edit screen
   this.openEditor = function (file) {
-    console.log("Edit", file);
+    if (!(file instanceof fs.File)) {
+      main.page.toast({theme:{background:"danger"},body:{content:`Error opening file.`}});
+      throw new Error(`@file must be fs.File(), ${file?.constructor?.name} given`)
+    }
+    this.elements.root.querySelectorAll("card-body div").forEach(el => {
+      el.classList.contains("filemanager-editor") ? el.style.removeProperty("display") : el.style.display = "none";
+    });
+    this.elements.nav.style.display = "none";
+    
+
+    this.elements.editorLoading.style.removeProperty("display");
+    fs.api.file(file => {
+      file = new fs.File(file);
+      switch (file.mimetype) {
+        case "text/x-markdown":
+        case "text/markdown": {
+          this.elements.editorCode.style.display = "none";
+          this.elements.editorMd.style.removeProperty("display");
+          if (this.editors.markdown === undefined) {
+            // init tui editor
+            const tuiCss = document.createElement("link");
+            tuiCss.href = "/r/css/tui-editor.css";
+            tuiCss.rel = "stylesheet";
+            document.head.append(tuiCss);
+            if ((matchMedia("(prefers-color-scheme: dark)") ?? false).matches || localStorage.theme === "dark") {
+              const tuiCssDark = document.createElement("link");
+              tuiCssDark.href = "/r/css/tui-editor-dark.css";
+              tuiCssDark.rel = "stylesheet";
+              document.head.append(tuiCssDark);
+            }
+            main.page.loadScript("/r/js/tui-editor.js", () => {
+              this.editors.markdown = new toastui.Editor({
+                el: this.elements.editorMd.children[0],
+                previewStyle: 'tab',
+                height: '500px',
+                theme: ((matchMedia("(prefers-color-scheme: dark)") ?? false).matches || localStorage.theme === "dark" ? "dark" : void(0))
+              });
+            });
+          }
+        }
+        default: {
+
+        }
+      }
+    });
   }
 
   this.mkdir = function () {
