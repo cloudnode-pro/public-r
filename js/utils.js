@@ -26,15 +26,18 @@ main.page.toast = function (options) {
 	html += `<div class="toast-body">${options.body.content}</div>`;
 	if (typeof options.header !== "object") html += `<button type="button" class="btn-close${options.theme.close ? ` btn-close-${options.theme.close}` : ""} me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>`;
 	html += `</div>`;
-	let $toast = $(".toast-container").append(html).find(`[data-toast="${id}"]`);
-	new bootstrap.Toast($toast[0], {
+	const arbitraryDiv = document.createElement("div");
+	arbitraryDiv.innerHTML = html;
+	const toast = arbitraryDiv.children[0];
+	document.querySelector(".toast-container").append(toast);
+	new bootstrap.Toast(toast, {
 		delay: options.delay,
 		autohide: options.autohide
 	}).show();
-	$toast[0].addEventListener('hidden.bs.toast', function () {
+	toast.addEventListener('hidden.bs.toast', function () {
 		this.remove();
 	})
-	return $toast;
+	return toast;
 }
 
 
