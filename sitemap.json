@@ -47,6 +47,10 @@
 		"title": "Privacy Policy",
 		"src": "cmp:pages/document"	
 	},
+	"/cookies": {
+		"title": "Cookie Notice",
+		"src": "cmp:pages/document"	
+	},
 	"/account": {
 		"title": "My Account",
 		"src": "cmp:pages/account"	
