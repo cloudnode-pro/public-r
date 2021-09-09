@@ -33,6 +33,11 @@ function CloudnodeFS (api) {
       };
     }
   }
+  this.ContentFile = function ({name, mode, created, size, mimetype, content}) {
+    const file = new fs.File({name: name, mode: mode, created: created, size: size, mimetype: mimetype});
+    file.content = content;
+    return file;
+  }
   this.FileCollection = function (files = []) {
     if (!(files instanceof Array)) throw new Error(`@files must be Array(); ${files?.constructor?.name} given`)
     this.length = 0;
