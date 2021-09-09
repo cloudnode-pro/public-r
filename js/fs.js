@@ -149,7 +149,11 @@ function FileManager (el, fs = new CloudnodeFS(), options = {}) {
     root: el,
     sidebar: el.querySelector(".filemanager-sidebar"),
     body: el.querySelector(".filemanager-body"),
-    nav: el.querySelector(".breadcrumb")
+    nav: el.querySelector(".breadcrumb"),
+    editor: el.querySelector(".filemanager-editor"),
+    editorMd: el.querySelector(".filemanager-editor .editor-md"),
+    editorCode: el.querySelector(".filemanager-editor .editor-code"),
+    editorLoading: el.querySelector(".filemanager-editor .editor-loading")
   };
 
   this.navigate = function (path) {
