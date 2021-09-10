@@ -44,7 +44,6 @@ else $(document).on("main.page.printed", function () {
 function whenPrinted () {
 	if (typeof bootstrap === "object") main.uiUtils.enableTooltops();
 	else $(document).on("main.page.scriptLoaded", function (e) {
-		console.log(e);
 	    if (e.detail.scripts.includes("/r/js/bs.js")) {
 		   	main.uiUtils.enableTooltops();
 		    if (localStorage.gdprConsent === undefined) {
