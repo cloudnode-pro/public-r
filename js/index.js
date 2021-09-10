@@ -45,14 +45,15 @@ function whenPrinted () {
 	if (typeof bootstrap === "object") main.uiUtils.enableTooltops();
 	else $(document).on("main.page.scriptLoaded", function (e) {
 		console.log(e);
-	    if (e.detail.scripts.includes("/r/js/bs.js")) main.uiUtils.enableTooltops();
-
-	    if (localStorage.gdprConsent === undefined) {
-	    	const gdprToast = main.page.toast({body:{content:`${main.langData.translate("We use cookies 🍪 to provide the best user experience we can.")} <a href="/cookies">${main.langData.translate("Read more")}</a>.<button class="btn btn-link d-block px-0 mt-1" data-bs-dismiss="toast">${main.langData.translate("Accept")}</a>`},autohide:false,theme:{background:"dark",color:"white"}});
-	    	gdprToast._element.querySelector(".btn").addEventListener("click", () => {
-	    		localStorage.setItem("gdprToast", "true");
-	    	});
-	    }
+	    if (e.detail.scripts.includes("/r/js/bs.js")) {
+		   	main.uiUtils.enableTooltops();
+		    if (localStorage.gdprConsent === undefined) {
+		    	const gdprToast = main.page.toast({body:{content:`${main.langData.translate("We use cookies 🍪 to provide the best user experience we can.")} <a href="/cookies">${main.langData.translate("Read more")}</a>.<button class="btn btn-link d-block px-0 mt-1" data-bs-dismiss="toast">${main.langData.translate("Accept")}</a>`},autohide:false,theme:{background:"dark",color:"white"}});
+		    	gdprToast._element.querySelector(".btn").addEventListener("click", () => {
+		    		localStorage.setItem("gdprToast", "true");
+		    	});
+		    }
+		}
 	});
 
 
