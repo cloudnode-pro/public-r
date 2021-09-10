@@ -30,14 +30,15 @@ main.page.toast = function (options) {
 	arbitraryDiv.innerHTML = html;
 	const toast = arbitraryDiv.children[0];
 	document.querySelector(".toast-container").append(toast);
-	new bootstrap.Toast(toast, {
+	const bsToast = new bootstrap.Toast(toast, {
 		delay: options.delay,
 		autohide: options.autohide
-	}).show();
+	});
+	bsToast.show();
 	toast.addEventListener('hidden.bs.toast', function () {
 		this.remove();
 	})
-	return toast;
+	return bsToast;
 }
 
 
