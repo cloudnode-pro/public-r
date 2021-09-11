@@ -6,11 +6,12 @@
  * repository. If not, please write to:
  * support@cloudnode.pro
  */
+@import "/r/css/colours.css";
+
 :root {
 	--gray-light: #f7f7f7;
 	--gray-dark: #202125;
 }
-@import "/r/css/colours.css";
 
 section .waves {
 	position: absolute;
