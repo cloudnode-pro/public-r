@@ -17,6 +17,15 @@
 	--primary-500: #7a91eb;
 	--primary-600: #647ee8;
 	--primary-700: #4866e4;
+	--primary-700-opacity-10: rgba(72, 102, 228, 10%);
+	--primary-700-opacity-20: rgba(72, 102, 228, 20%);
+	--primary-700-opacity-30: rgba(72, 102, 228, 30%);
+	--primary-700-opacity-40: rgba(72, 102, 228, 40%);
+	--primary-700-opacity-50: rgba(72, 102, 228, 50%);
+	--primary-700-opacity-60: rgba(72, 102, 228, 60%);
+	--primary-700-opacity-70: rgba(72, 102, 228, 70%);
+	--primary-700-opacity-80: rgba(72, 102, 228, 80%);
+	--primary-700-opacity-90: rgba(72, 102, 228, 90%);
 	--primary-800: #3759e1;
 	--primary-900: #2147de;
 	--primary-1000: #1e40c8;
