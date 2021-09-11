@@ -59,5 +59,22 @@
 	--red-1300: #6c131c;
 	--red-1400: #570f16;
 	--red-1500: #410b11;
+
+	--orange: var(--orange-700);
+	--orange-100: #ffda99;
+	--orange-200: #ffd080;
+	--orange-300: #ffc766;
+	--orange-400: #ffbe4d;
+	--orange-500: #ffb433;
+	--orange-600: #ffab1a;
+	--orange-700: #ffa000;
+	--orange-800: #e69100;
+	--orange-900: #cc8100;
+	--orange-1000: #b37100;
+	--orange-1100: #996100;
+	--orange-1200: #805100;
+	--orange-1300: #664100;
+	--orange-1400: #4d3000;
+	--orange-1500: #332000;
 }
 /* #27d7fe */
