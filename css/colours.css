@@ -76,5 +76,31 @@
 	--orange-1300: #664100;
 	--orange-1400: #4d3000;
 	--orange-1500: #332000;
+	--black: var(--monochrome-100);
+	--dark: var(--monochrome-200);
+	--gray-dark: var(--monochrome-400);
+	--gray-light: var(--monochrome-2000);
+	--white: var(--monochrome-2100);
+	--monochrome-100: #000000;
+	--monochrome-200: #121212;
+	--monochrome-300: #1d1d1d;
+	--monochrome-400: #212121;
+	--monochrome-500: #242424;
+	--monochrome-600: #272727;
+	--monochrome-700: #2c2c2c;
+	--monochrome-800: #2d2d2d;
+	--monochrome-900: #323232;
+	--monochrome-1000: #353535;
+	--monochrome-1100: #373737;
+	--monochrome-1200: #4b4b4b;
+	--monochrome-1300: #5f5f5f;
+	--monochrome-1400: #737373;
+	--monochrome-1500: #878787;
+	--monochrome-1600: #9b9b9b;
+	--monochrome-1700: #afafaf;
+	--monochrome-1800: #c3c3c3;
+	--monochrome-1900: #d7d7d7;
+	--monochrome-2000: #ebebeb;
+	--monochrome-2100: #ffffff;
 }
 /* #27d7fe */
