@@ -7,7 +7,7 @@
  * support@cloudnode.pro
  */
 
-/* Colour variations with 5% */
+/* Colour variations with 5% step */
 :root {
 	--primary: var(--primary-700);
 	--primary-100: #d3daf8;
@@ -26,7 +26,21 @@
 	--primary-1400: #11236f;
 	--primary-1500: #0d1c59;
 
-	--green: #2fcb66;
-	--green-100: #d6f5e1;
+	--green: var(--green-700);
+	--green-100: #acecc3;
+	--green-200: #98e7b3;
+	--green-300: #83e2a4;
+	--green-400: #6edd95;
+	--green-500: #5ad886;
+	--green-600: #45d377;
+	--green-700: #2fcb66;
+	--green-800: #2cba5d;
+	--green-900: #27a553;
+	--green-1000: #229149;
+	--green-1100: #1d7c3e;
+	--green-1200: #186734;
+	--green-1300: #13532a;
+	--green-1400: #0f3e1f;
+	--green-1500: #0f3e1f;
 }
 /* #27d7fe */
