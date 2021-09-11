@@ -1,0 +1,32 @@
+/* Copyright (C) 2021 Cloudnode - All Rights Reserved
+ * Any use, distribution or modification of this code
+ * is subject to the terms of the provided license.
+ *
+ * The license is available at the root (/) of the
+ * repository. If not, please write to:
+ * support@cloudnode.pro
+ */
+
+/* Colour variations with 5% */
+:root {
+	--primary: var(--primary-700);
+	--primary-100: #d3daf8;
+	--primary-200: #bcc8f5;
+	--primary-300: #a6b5f2;
+	--primary-400: #90a3ee;
+	--primary-500: #7a91eb;
+	--primary-600: #647ee8;
+	--primary-700: #4866e4;
+	--primary-800: #3759e1;
+	--primary-900: #2147de;
+	--primary-1000: #1e40c8;
+	--primary-1100: #1b39b1;
+	--primary-1200: #17329b;
+	--primary-1300: #142b85;
+	--primary-1400: #11236f;
+	--primary-1500: #0d1c59;
+
+	--green: #2fcb66;
+	--green-100: #d6f5e1;
+}
+/* #27d7fe/*
