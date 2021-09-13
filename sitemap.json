@@ -5,11 +5,13 @@
 	},
 	"/tickets": {
 		"title": "Tickets",
-		"src": "text:your tickets here"
+		"src": "text:your tickets here",
+		"session": true
 	},
 	"/tickets/*": {
 		"title": "Ticket",
-		"src": "text:The ID of this ticket is {{main.page.basename}}"
+		"src": "text:The ID of this ticket is {{main.page.basename}}",
+		"session": true
 	},
 	"/errors/404": {
 		"title": "Error",
@@ -33,11 +35,13 @@
 	},
 	"/login": {
 		"title": "Sign In",
-		"src": "cmp:pages/login"	
+		"src": "cmp:pages/login",
+		"session": false	
 	},
 	"/register": {
 		"title": "Sign Up",
-		"src": "cmp:pages/register"	
+		"src": "cmp:pages/register",
+		"session": false
 	},
 	"/terms": {
 		"title": "Terms of Service",
@@ -53,23 +57,28 @@
 	},
 	"/account": {
 		"title": "My Account",
-		"src": "cmp:pages/account"	
+		"src": "cmp:pages/account",
+		"session": true	
 	},
 	"/account/*": {
 		"title": "My Account",
-		"src": "cmp:pages/account"	
+		"src": "cmp:pages/account",
+		"session": true	
 	},
 	"/servers": {
 		"title": "Servers",
-		"src": "cmp:pages/servers"	
+		"src": "cmp:pages/servers",
+		"session": true
 	},
 	"/servers/*": {
 		"title": "Server",
-		"src": "cmp:pages/panel"	
+		"src": "cmp:pages/panel",
+		"session": true	
 	},
 	"/servers/*/*": {
 		"title": "Server",
-		"src": "cmp:pages/panel"	
+		"src": "cmp:pages/panel",
+		"session": true	
 	},
 	"/credits.txt": {
 		"title": "Credits",
@@ -81,7 +90,8 @@
 	},
 	"/logout": {
 		"title": "Sign Out",
-		"src": "cmp:pages/logout"	
+		"src": "cmp:pages/logout",
+		"session": true	
 	},
 	"/support": {
 		"title": "Support Center",
@@ -97,11 +107,13 @@
 	},
 	"/create": {
 		"title": "Create Server",
-		"src": "cmp:pages/create"
+		"src": "cmp:pages/create",
+		"session": true
 	},
 	"/create/*": {
 		"title": "Plan",
-		"src": "cmp:pages/plan"
+		"src": "cmp:pages/plan",
+		"session": true
 	},
 	"/status": {
 		"title": "Status",
