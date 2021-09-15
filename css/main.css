@@ -821,20 +821,6 @@ li[data-bs-toggle="tooltip"] {
     overflow: auto;
 }
 
-.loader.lg {
-    width: 120px;
-    height: 120px;
-    border-width: 4px;
-}
-
-.loader {
-    border: 2px solid;
-    border-color: #00000026;
-    border-radius: 50%;
-    border-top-color: var(--bs-primary);
-    animation: loader-spin 1s linear infinite;
-}
-
 .btn.loading::after {
 	content: "";
 	width: 20px;
@@ -861,14 +847,6 @@ li[data-bs-toggle="tooltip"] {
     font-size: 1rem;
 }
 
-@keyframes loader-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
 ::-webkit-scrollbar {
 	width: .65rem;
 }
