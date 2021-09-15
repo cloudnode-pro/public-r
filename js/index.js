@@ -76,4 +76,42 @@ function whenPrinted () {
 	        }, 260);
 		});
 	}
+}*/
+const pageTriggers = {
+	"/errors/404": {
+		inited: false,
+		init: function () {
+
+		},
+		trigger: async function () {
+			const promise = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve('foo');
+				}, 3000);
+			});
+			return promise;
+		}
+	}
 }
+
+document.addEventListener("main.navigate", () => {
+	const callback = () => loader.hide(100);
+	if (pageTriggers[page.handle] === undefined) callback();
+	function init () {
+		if (typeof pageTriggers[page.handle].init === "function") {
+			const response = pageTriggers[page.handle].init();
+			if (response instanceof Promise) response.then(trigger);
+			else trigger();
+		}
+		else trigger();
+	}
+	function trigger () {
+		if (typeof pageTriggers[page.handle].trigger === "function") {
+			const response = pageTriggers[page.handle].trigger();
+			if (response instanceof Promise) response.then(callback);
+			else callback();
+		}
+		else callback();
+	}
+	init();
+});
