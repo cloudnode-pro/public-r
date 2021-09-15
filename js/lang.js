@@ -6,63 +6,65 @@
  * repository. If not, please write to:
  * support@cloudnode.pro
  */
-main.langModuleLoadCallbacks = [function () {main.langModuleLoaded = !0}];
-main.langModuleLoaded = false;
-
-// https://stackoverflow.com/a/67565182/7089726
-function replaceTemplates (str, templates = main.langData.translations) {
-    const escapeRegExp = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
-    for (const [template, replacement] of Object.entries(templates)) {
-        const re = new RegExp('^' + escapeRegExp(template).replace(/%s/g, '(.*?)') + '$')
-        if (re.test(str)) {
-            let i = 1;
-            const reReplacement = replacement
-                .replace(/\$/g, '$$$$')
-                .replace(/%s/g, () => '$' + i++)
-                return str.replace(re, reReplacement)
-        }
-    }
-    main.langData.fallback[str] = str;
-    return str
-}
-
-if (sessionStorage["languages.json"] === undefined || sessionStorage["languages.translations"] === undefined) $.get({
-    url: `https://${main.endpoints.git}/translations/languages.json`,
-    success: function (response) {
-        response = response.content;
-        main.langData = {
-        	languages: response,
-            fallback: {}
-        }
-        sessionStorage.setItem("languages.json", JSON.stringify(response));
-
-        if (main.langData.languages[navigator.language.substr(0,2)] && main.cookies.lang === undefined) main.lang = navigator.language.substr(0,2);
-        else if (main.langData.languages[main.cookies.lang]) main.lang = main.cookies.lang;
-
-        $.get({
-            url: `https://${main.endpoints.git}/translations/translations/${main.lang}.json`,
-            success: function (response) {
-                response = response.content;
-                main.langData.translations = response;
-                sessionStorage.setItem("languages.translations", JSON.stringify(response))
-
-                main.langData.translate = replaceTemplates;
-
-                for (let cb of main.langModuleLoadCallbacks) cb();
+const LanguageModule = class {
+    constructor(gitServer) {
+        this.node = typeof process === "object";
+        const fetch = this.node ? require("node-fetch") : window.fetch;
+        // https://stackoverflow.com/a/67565182/7089726
+        this.replaceTemplates = this.translate = function (str, templates) {
+            const escapeRegExp = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+            for (const [template, replacement] of Object.entries(templates)) {
+                const re = new RegExp('^' + escapeRegExp(template).replace(/%s/g, '(.*?)') + '$')
+                if (re.test(str)) {
+                    let i = 1;
+                    const reReplacement = replacement
+                        .replace(/\$/g, '$$$$')
+                        .replace(/%s/g, () => '$' + i++)
+                        return str.replace(re, reReplacement)
+                }
             }
-        })
+            lang.data.fallback[str] = str;
+            return str
+        };
+        this.init = async function (lang) {
+            const promise = new Promise((resolve, reject) => {
+                if ((this.node && typeof this.data !== "object") || (!this.node && sessionStorage["languages.json"] === undefined)) {
+                    fetch(`https://${gitServer}/translations/languages.json`).then(response => {
+                        if (response.status !== 200) reject(response);
+                        else response.json().then(languages => {
+                            if (!this.node) fetch(`https://${gitServer}/translations/translations/${lang}.json`).then(f => f.json().then(data => {
+                                const translations = data.content;
+                                this.data = {languages, translations};
+                                sessionStorage.setItem("languages.json", JSON.stringify(languages));
+                                sessionStorage.setItem("languages.translations", JSON.stringify(translations));
+                                resolve(this.data);
+                            }));
+                            else {
+                                this.data = {languages};
+                                this.translations = {};
+                                function loop (i, keys, done) {
+                                    if (i === keys.length) return done();
+                                    const language = keys[language];
+                                    fetch(`https://${gitServer}/translations/translations/${language}.json`).then(f => f.status !== 200 ? reject(f) : f.json().then(data => {
+                                        const translations = data.content;
+                                        this.data.translations[language] = data;
+                                        loop(++i, keys, done);
+                                    }));
+                                }
+                                loop(0, Object.keys(languages), () => resolve(this.data));
+                            }
+                        })
+                    });
+                }
+                else {
+                    if (!this.node) this.data = {
+                        languages: JSON.parse(sessionStorage["languages.json"]),
+                        translations: JSON.parse(sessionStorage["languages.translations"])
+                    }
+                    resolve(this.data)
+                };
+            });
+            return promise;
+        }
     }
-});
-else {
-    main.langData = {
-        languages: JSON.parse(sessionStorage["languages.json"]),
-        translations: JSON.parse(sessionStorage["languages.translations"]),
-        fallback: {}
-    }
-
-    if (main.langData.languages[navigator.language.substr(0,2)] && main.cookies.lang === undefined) main.lang = navigator.language.substr(0,2);
-    else if (main.langData.languages[main.cookies.lang]) main.lang = main.cookies.lang;
-
-    for (let cb of main.langModuleLoadCallbacks) cb();
-    main.langData.translate = replaceTemplates;
 }
