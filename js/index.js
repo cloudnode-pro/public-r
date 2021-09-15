@@ -6,7 +6,7 @@
  * repository. If not, please write to:
  * support@cloudnode.pro
  */
-window.addEventListener("offline", function () {
+/*window.addEventListener("offline", function () {
     main.page.toast({body: {content: "<b>You are offline.</b><br>You can continue using the platform, but some pages and features may not function as expected."},theme: {background: "dark",color: "white",close: "white"},delay: 8000})
 });
 window.addEventListener("online", function () {
