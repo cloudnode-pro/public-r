@@ -96,7 +96,7 @@ const pageTriggers = {
 
 document.addEventListener("main.navigate", () => {
 	const callback = () => loader.hide(100);
-	if (pageTriggers[page.handle] === undefined) callback();
+	if (pageTriggers[page.handle] === undefined) return callback();
 	function init () {
 		if (typeof pageTriggers[page.handle].init === "function") {
 			const response = pageTriggers[page.handle].init();
